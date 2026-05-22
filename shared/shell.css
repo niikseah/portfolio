@@ -338,7 +338,7 @@ nav.nav:has(.nav-inner) {
 
 /* ─── footer ─── */
 .footer {
-  margin-top: 116px;
+  margin-top: 24px;
   padding: 28px 0 60px;
   border-top: 1px dashed var(--border-2);
   color: var(--fg-3);
@@ -357,8 +357,9 @@ nav.nav:has(.nav-inner) {
 
 /* ─── case-study / project page footer (shared layout) ─── */
 footer.case-footer {
-  margin-top: clamp(40px, 6vw, 88px);
-  padding: clamp(48px, 7vw, 72px) 0 clamp(40px, 5vw, 56px);
+  margin-top: 56px;
+  min-height: 96px;
+  padding: 0;
   border-top: 1px solid var(--border-1, #e4e1d8);
   background: color-mix(
     in srgb,
@@ -384,12 +385,16 @@ footer.case-footer.case-footer--fullbleed .case-footer__inner {
 footer.case-footer .case-footer__inner {
   max-width: min(1240px, 100%);
   margin: 0 auto;
+  min-height: 96px;
   padding: 0 var(--page-gutter, clamp(18px, 3vw, 40px));
+  display: flex;
+  align-items: center;
 }
 footer.case-footer .case-footer__grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: clamp(28px, 4vw, 48px);
+  width: 100%;
   align-items: center;
 }
 footer.case-footer .case-footer__mark {
@@ -410,15 +415,19 @@ footer.case-footer .case-footer__mark em {
   font-weight: inherit;
 }
 footer.case-footer .case-footer__meta {
+  grid-column: 2;
+  justify-self: end;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 4px;
   text-align: right;
 }
 footer.case-footer .case-footer__row {
-  margin: 0 0 10px;
+  margin: 0;
   font-size: var(--step--1, 14px);
   color: var(--fg-2, #3c445a);
-}
-footer.case-footer .case-footer__row:last-child {
-  margin-bottom: 0;
 }
 footer.case-footer .case-footer__k {
   display: inline-block;
@@ -493,13 +502,6 @@ main > .cs-summary dd,
   font-size: 13px;
 }
 @media (max-width: 680px) {
-  footer.case-footer .case-footer__grid {
-    grid-template-columns: 1fr;
-    gap: 24px;
-  }
-  footer.case-footer .case-footer__meta {
-    text-align: left;
-  }
   .cs-summary,
   main > .cs-summary,
   .hero .cs-summary,
@@ -711,16 +713,8 @@ main > .cs-summary dd,
   --kind-hover-text: var(--fg-1);
   --kind-hover-shadow: none;
 }
-.kind--clickable:hover {
-  border-color: var(--kind-hover-border);
-  color: #fff;
-  background: var(--kind-hover-bg);
-  transform: translateY(-1px);
-  box-shadow: var(--kind-hover-shadow);
-}
-[data-theme="day"] .kind--clickable:hover {
-  color: #fff;
-}
+.kind--clickable:hover {}
+[data-theme="day"] .kind--clickable:hover {}
 .card__meta .kind,
 .card__meta .kind--clickable {
   font-size: 14px;
@@ -1031,7 +1025,7 @@ main > .cs-summary dd,
   .nav__link { font-size: 16px; padding-bottom: 6px; }
   .nav__meta { display: none; }
   .footer {
-    margin-top: 84px;
+    margin-top: 24px;
     padding: 24px 0 40px;
     flex-direction: column;
     align-items: flex-start;

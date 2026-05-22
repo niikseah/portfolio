@@ -46,7 +46,14 @@
     main {
       max-width: 1120px;
       margin: 0 auto;
-      padding: 56px 24px 96px;
+      padding-top: 56px;
+      padding-right: 24px;
+      padding-bottom: 0;
+      padding-left: 24px;
+    }
+    footer.case-footer {
+      margin-top: 56px !important;
+      padding-top: 0 !important;
     }
     main > * + * {
       margin-top: 4px;
@@ -244,7 +251,7 @@
       color: var(--ink);
       font-weight: 600;
     }
-    .controls { display: grid; gap: 10px; }
+    .controls { display: grid; gap: 4px; }
     label {
       font-family: var(--mono);
       text-transform: uppercase;
@@ -400,6 +407,7 @@
   </style>
   <link rel="stylesheet" href="../shared/shell.css" />
   <link rel="stylesheet" href="../shared/phase1-ds-bridge.css" />
+  <link rel="stylesheet" href="../shared/case-study-longform.css" />
   <style>
     /* Solid white (overrides phase1-ds-bridge .panel tinted fill) */
     article.panel.panel-model,
@@ -408,9 +416,29 @@
     .panel-model .kpi {
       background: #fff;
     }
+    main .panel h2 {
+      margin: 0 0 12px;
+      font-size: 30px;
+      font-weight: 500;
+      line-height: 1.15;
+      scroll-margin-top: 0;
+    }
     main > aside.key-features {
+      margin-top: var(--grid-gutter);
+      padding: 18px;
       background-color: #fff !important;
       background-image: none;
+    }
+    main > aside.key-features h3 {
+      margin: 0 0 12px;
+      font-family: var(--display);
+      font-size: 30px;
+      font-weight: 500;
+      line-height: 1.15;
+      letter-spacing: 0;
+      text-transform: none;
+      color: var(--ink);
+      scroll-margin-top: 0;
     }
     main > aside.key-features .key-features__list > li {
       background: #fff !important;
@@ -441,8 +469,11 @@
       letter-spacing: 0.1em;
     }
     main > .cs-summary dd {
-      font-size: calc(1.05rem - 2px);
-      line-height: 1.4;
+      font-size: 14px;
+      line-height: 1.2;
+      min-height: 30px;
+      display: inline-flex;
+      align-items: center;
     }
     .tool-chip {
       display: inline-flex;
@@ -476,13 +507,23 @@
       object-fit: cover;
       display: block;
     }
-    .tool-name { line-height: 1.2; }
+    .tool-name {
+      font-family: var(--body);
+      font-size: 14px;
+      font-weight: 400;
+      letter-spacing: 0;
+      line-height: 1.2;
+    }
     main > .cs-summary + .grid {
       margin-top: 20px;
     }
+    main > .grid {
+      width: 100%;
+      max-width: none;
+    }
   </style>
 </head>
-<body>
+<body class="case-study-longform" data-case-toc="false">
   <header class="project-topbar">
     <div class="project-topbar__inner">
       <a
@@ -583,9 +624,6 @@
   <footer class="case-footer" aria-label="Project details">
     <div class="case-footer__inner">
       <div class="case-footer__grid">
-        <div class="case-footer__mark">
-          <em>tended with love and care 💐</em>
-        </div>
         <div class="case-footer__meta">
           <p class="case-footer__row"><span class="case-footer__k">Course</span> <span class="case-footer__v">CS3245 Information Retrieval</span></p>
           <p class="case-footer__row"><span class="case-footer__k">Tool</span> <span class="case-footer__v">Python</span></p>
@@ -904,5 +942,6 @@
 
     loadModel();
   </script>
+  <script src="../shared/case-study-longform.js"></script>
 </body>
 </html>

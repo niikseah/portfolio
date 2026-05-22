@@ -21,7 +21,7 @@
       margin: 0 auto;
     }
     .port-head {
-      padding: clamp(58px, 7vw, 92px) 0 28px;
+      padding: 0 0 28px;
       border-bottom: 1px solid var(--border-1);
       margin-bottom: 18px;
     }
@@ -55,6 +55,76 @@
     .port-count {
       font-family: var(--font-mono); font-size: var(--step--1); color: var(--fg-3);
     }
+    .port-filterbar {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    .port-filterbar__label {
+      font-family: var(--font-mono);
+      font-size: var(--step--1);
+      color: var(--fg-3);
+      margin-right: 2px;
+    }
+    .port-filterbar__active {
+      display: inline-flex;
+      align-items: center;
+      border: 1px solid var(--electric-300);
+      border-radius: 999px;
+      padding: 3px 10px;
+      font-family: var(--font-mono);
+      font-size: var(--step--1);
+      letter-spacing: 0.02em;
+      color: var(--electric-700);
+      background: rgba(124,184,255,.12);
+    }
+    .port-filterbar select {
+      border: 1px solid var(--border-2);
+      background: rgba(124,184,255,.04);
+      color: var(--fg-2);
+      border-radius: 999px;
+      padding: 3px 28px 3px 10px;
+      font-family: var(--font-display);
+      font-size: calc(var(--step--1) + 2px);
+      font-weight: 400;
+      letter-spacing: 0.02em;
+      text-transform: lowercase;
+      line-height: 1.3;
+      cursor: pointer;
+      appearance: none;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      min-width: 160px;
+      box-shadow: 0 1px 2px rgba(20, 42, 92, 0.08);
+      background-image:
+        linear-gradient(45deg, transparent 50%, var(--fg-3) 50%),
+        linear-gradient(135deg, var(--fg-3) 50%, transparent 50%);
+      background-position:
+        calc(100% - 14px) calc(50% - 2px),
+        calc(100% - 9px) calc(50% - 2px);
+      background-size: 5px 5px, 5px 5px;
+      background-repeat: no-repeat;
+      transition: border-color var(--dur-2) var(--ease-out), color var(--dur-2) var(--ease-out), background var(--dur-2) var(--ease-out), transform var(--dur-2) var(--ease-out);
+    }
+    .port-filterbar select:hover {
+      border-color: var(--border-strong);
+      color: var(--fg-1);
+      transform: translateY(-1px);
+    }
+    .port-filterbar select:focus-visible {
+      outline: 2px solid var(--electric-300);
+      outline-offset: 2px;
+    }
+    .port-filterbar--active select {
+      background: var(--electric-700);
+      border-color: var(--electric-700);
+      color: #ffffff;
+      box-shadow: 0 8px 18px -14px rgba(24, 71, 196, 0.75);
+      background-image:
+        linear-gradient(45deg, transparent 50%, rgba(255,255,255,.9) 50%),
+        linear-gradient(135deg, rgba(255,255,255,.9) 50%, transparent 50%);
+    }
     .port-empty {
       margin-top: 16px;
       padding: 28px;
@@ -62,6 +132,33 @@
       border-radius: 14px;
       color: var(--fg-2);
       background: rgba(124,184,255,.03);
+    }
+    .port-shell .kind--clickable {
+      --kind-hover-bg: rgba(124,184,255,.04);
+      --kind-hover-border: currentColor;
+      --kind-hover-text: currentColor;
+      --kind-hover-shadow: none;
+    }
+    .port-shell .kind--clickable:hover {
+      transform: none;
+      box-shadow: none;
+    }
+    .port-shell .card:hover {
+      border-color: var(--border-1);
+      background: var(--bg-3);
+      box-shadow: none;
+    }
+    .port-shell .card:hover .card__thumb img {
+      transform: none;
+      filter: none;
+    }
+    .port-shell .card:hover .card__title {
+      color: var(--fg-1);
+    }
+    .port-shell .card__foot .arrow:hover,
+    .port-shell .card:hover .card__foot .arrow {
+      color: var(--electric-300);
+      animation: none;
     }
     .port-grid {
       display: grid;
@@ -207,7 +304,6 @@
                 </Eyebrow>
                 <h1>Thing's I've <em>designed</em> and <em>built</em></h1>
               </header>
-
               {filtered.length > 0 ? (
                 <div className="port-grid">
                   {columns.map((group, colIdx) => (

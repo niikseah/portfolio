@@ -152,6 +152,9 @@
     }
     .icp-fulltext-note a { color: var(--lb-navy); font-weight: 500; }
     .icp-toc {
+      position: sticky;
+      top: 72px;
+      z-index: 40;
       display: flex;
       flex-wrap: wrap;
       align-items: baseline;
@@ -162,6 +165,7 @@
       border-radius: 12px;
       background: var(--paper-warm);
       font-size: 0.88rem;
+      box-shadow: 0 14px 32px -28px rgba(15, 23, 41, 0.55);
     }
     .icp-toc__label {
       font-weight: 600;
@@ -172,10 +176,20 @@
       color: var(--lb-muted);
       text-decoration: none;
       font-weight: 500;
+      border-radius: 999px;
+      padding: 4px 10px;
+      margin: -4px -10px;
+      transition: background-color 0.18s ease, color 0.18s ease;
     }
     .icp-toc__link:hover { color: var(--blue); text-decoration: underline; }
+    .icp-toc__link.is-active,
+    .icp-toc__link[aria-current="true"] {
+      color: var(--blue);
+      background: var(--blue-tint);
+      text-decoration: none;
+    }
     .icp-body {
-      max-width: 760px;
+      max-width: 960px;
       margin: 0 auto;
       border: none;
       border-radius: 0;
@@ -204,7 +218,7 @@
     .icp-chapter {
       margin-top: 0;
       margin-bottom: 96px;
-      scroll-margin-top: 72px;
+      scroll-margin-top: 156px;
       position: relative;
     }
     .icp-chapter:last-child { margin-bottom: 0; }
@@ -234,7 +248,7 @@
       letter-spacing: -0.015em;
       color: var(--ink);
       margin: 48px 0 16px;
-      scroll-margin-top: 72px;
+      scroll-margin-top: 156px;
     }
     .icp-table-wrap {
       overflow-x: auto;
@@ -379,8 +393,6 @@
     <dl class="cs-summary">
       <div><dt>Deliverable</dt><dd>Integrated Communications Plan</dd></div>
       <div><dt>Focus</dt><dd>Non-profit Strategy</dd></div>
-      <div><dt>Format</dt><dd>Living Document</dd></div>
-      <div><dt>Audience</dt><dd>Volunteers, Donors, Public</dd></div>
     </dl>
 
     <section class="section icp-fulltext">
@@ -397,26 +409,40 @@
       <article class="icp-body" aria-labelledby="icp-document">
         <section class="icp-chapter" id="introduction">
           <h2>Introduction</h2>
-          <p>Introduction to Lions Befrienders Service Association (Singapore) — Singapore’s rapid urban transformation in the 1980s saw widespread resettlement of Singaporeans from kampungs to high-rise public housing, fragmenting communities and families (Debbie Loo, 2017). As the elderly became increasingly isolated in unfamiliar environments, the then Ministry of Community Development piloted the Befriending Service in 1982 to support at-risk seniors. In 1994, the program was handed over to Lions Clubs, a service organisation dedicated to volunteerism, and established in 1995 as a voluntary welfare organisation known as Lions Befrienders Service Association (Singapore) [LBSA] (Lions Befrienders Service Association (Singapore), 2022). LBSA’s mission centres on providing friendship and care for seniors to age-in-place with community participation, enabling them to enjoy meaningful and enriching lives (Lions Befrienders, 2025b). LBSA operates 5 core services: the Befriending Service trains volunteers to be friends with seniors,  providing social and emotional support; 10 Active Ageing Centres (AACs) serve as drop-in social recreational spaces for community engagement (Support, 2025); Community Case Management Services (CCMS) delivers enhanced support for severe cases (‘Community Case Management Service (CCMS)’, 2025); Home Personal Care (HPC) provides in-home assistance for mobility-limited seniors (‘Home Personal Care’, 2025a); and LB TechCare bridges the digital divide through technology (‘LB TechCare’, 2025). LBSA is governed by a Management Board and Management Committee of over 100 members representing more than 40 Lions Clubs across Singapore, with members of Parliament serving as Chief Advisors to the AACs and grassroots leaders serving as board members (‘Management Board’, 2025). LBSA employs around 145 paid staff across departments covering Social Health Care Programmes, CCMS and HPC, Counselling Capabilities Development, Core Services, Partnerships &amp; Communications, and Projects and Innovations (Lions Befrienders Service Association (Singapore), 2025a). At the delivery level, LBSA engages 1,000 active volunteers in working towards their vision of a nation where every senior is active, healthy, and happy (‘Who We Are’, 2025). LBSA operates as a “multigenerational extended family that is filled with love”, where serving seniors goes beyond service delivery to fostering genuine bonds (Home, 2025). Their work ethic is guided by 6 core values: Commitment, Integrity, Respect, Compassion, Leadership, and Empathy.</p>
+          <p>Singapore’s rapid urban transformation in the 1980s saw widespread resettlement of Singaporeans from kampungs to high-rise public housing, fragmenting communities and families (Debbie Loo, 2017). As the elderly became increasingly isolated in unfamiliar environments, the then Ministry of Community Development piloted the Befriending Service in 1982 to support at-risk seniors. In 1994, the program was handed over to Lions Clubs, a service organisation dedicated to volunteerism, and established in 1995 as a voluntary welfare organisation known as Lions Befrienders Service Association (Singapore) [LBSA] (Lions Befrienders Service Association (Singapore), 2022). LBSA’s mission centres on providing friendship and care for seniors to age-in-place with community participation, enabling them to enjoy meaningful and enriching lives (Lions Befrienders, 2025b). LBSA operates 5 core services: the Befriending Service trains volunteers to be friends with seniors,  providing social and emotional support; 10 Active Ageing Centres (AACs) serve as drop-in social recreational spaces for community engagement (Support, 2025); Community Case Management Services (CCMS) delivers enhanced support for severe cases (‘Community Case Management Service (CCMS)’, 2025); Home Personal Care (HPC) provides in-home assistance for mobility-limited seniors (‘Home Personal Care’, 2025a); and LB TechCare bridges the digital divide through technology (‘LB TechCare’, 2025). LBSA is governed by a Management Board and Management Committee of over 100 members representing more than 40 Lions Clubs across Singapore, with members of Parliament serving as Chief Advisors to the AACs and grassroots leaders serving as board members (‘Management Board’, 2025). LBSA employs around 145 paid staff across departments covering Social Health Care Programmes, CCMS and HPC, Counselling Capabilities Development, Core Services, Partnerships &amp; Communications, and Projects and Innovations (Lions Befrienders Service Association (Singapore), 2025a). At the delivery level, LBSA engages 1,000 active volunteers in working towards their vision of a nation where every senior is active, healthy, and happy (‘Who We Are’, 2025). LBSA operates as a “multigenerational extended family that is filled with love”, where serving seniors goes beyond service delivery to fostering genuine bonds (Home, 2025). Their work ethic is guided by 6 core values: Commitment, Integrity, Respect, Compassion, Leadership, and Empathy.</p>
         </section>
         <section class="icp-chapter" id="swot-analysis">
           <h2>SWOT Analysis</h2>
+          <h3 class="icp-subhead">Adaptability</h3>
           <p>One of LBSA’s strengths is its adaptability, demonstrated by TechCare, an initiative leveraging technology to build a comprehensive and personalised care ecosystem for seniors. TechCare’s features are organised around 4 themes: Active Ageing Centre-based, detection and early intervention-based, education-based, and home-based. These features allow LBSA to better understand seniors’ mental and emotional needs, enabling early detection and timely intervention of potential problems. The impetus to develop TechCare was exacerbated by external events such as the COVID-19 pandemic, which threatened the sustainability of physical initiatives, and the influx of scams targeting seniors. Despite these unprecedented challenges, LBSA harnessed new digital tools to ensure organisational resilience (Julian Azfar, 2025).</p>
+          <h3 class="icp-subhead">User-Centred and Holistic Approach</h3>
           <p>Another key strength of LBSA is its user-centred and holistic approach, which underscores its deep understanding of seniors’ needs and consistent focus on them. TechCare’s IM-OKAY tablet, for instance, directly addresses seniors’ fear of “dying without people knowing” by reassuring them that help is always accessible (Theresa Tan, 2021). In addition, the facilitation of alternative means of communications with families and LBSA staff alleviates loneliness by empowering seniors to remain socially (Mchugh, 2025). IM-OKAY tablet’s customisability and user-friendly design accommodate seniors’ diverse needs, reflecting their goal of creating desirable, usable, and useful solutions that genuinely improve seniors’ lives (team, 2025). By focusing on real pain points and designing with empathy, LBSA delivers impactful solutions for seniors.</p>
+          <h3 class="icp-subhead">Organisational Credibility</h3>
           <p>Lastly, LBSA’s organisational credibility, built over the past 30 years, is a strength. Since 1995, it has served over 86,000 seniors, currently helping over 7,800 active beneficiaries enjoy a fulfilling life during their silver years (SPH Media, 2022). This track record has been instrumental in overcoming barriers to senior engagement, particularly the stigma and distrust the elderly have towards formal social services, with seniors associating them with a loss of independence and dignity (Nikki Yeo, 2025). LBSA’s comprehensive service portfolio positions itself as a holistic service provider that addresses the full spectrum of senior care needs while maintaining the community-based approach that has differentiated it from more clinical or institutional care providers and earned seniors&#x27; confidence. Additionally, LBSA&#x27;s alignment with national healthy ageing policies and its registered membership with the National Council of Social Service provide institutional legitimacy (Lions Befrienders Service Association (Singapore), 2023).</p>
+          <h3 class="icp-subhead">Financial Vulnerabilities</h3>
           <p>However, LBSA faces significant financial vulnerabilities threatening its sustainability and expansion capacity in Singapore’s increasingly expensive eldercare landscape. Long-term costs to support a Singaporean senior have increased by 27% from 2018 to 2024 (Singlife, 2025). Still, LBSA cannot raise its program fees because low-income seniors will be unable to afford these essential services despite subsidies. Furthermore, LBSA has to compete with over 2,400 registered charities for government grants, donor support, and corporate partnerships (Stacy Choong, 2025). Consequently, technological innovation and capacity building are limited because they demand significant capital investments. At the same time, demand for services continues to grow exponentially with Singapore&#x27;s rapidly ageing population; LBSA faces staff recruitment and retention challenges, exacerbated by workforce shortages in the social services sector, driving personnel costs up.</p>
+          <h3 class="icp-subhead">Governmental Support and Expansion Opportunities</h3>
           <p>LBSA is well-positioned to capitalise on several converging trends to gain governmental support, presenting significant expansion opportunities. Senior participation increased by 30% from 2022 to 2023 at LBSA’s AACs as the range of activities increased, demonstrating growing recognition of AACs’ value amongst seniors and diminishing stigma around formal senior services (Julian Azfar, 2025). In addition, Singapore’s push toward “Smart Nation” and “Digital for Life” initiatives also presents funding and policy support opportunities to close the digital divide, improve access, and innovate with tech-driven service models (Lions Befrienders, 2022). COVID-19&#x27;s acceleration of digital adoption has normalised technology-mediated care delivery, reducing resistance amongst tech-averse seniors and garnering demand for LBSA’s TechCare. With Singapore looking to AI to manage its fast-ageing population, as 25% of residents will be 65 and above by 2030 (Longevity, 2024), the government has implemented a S$3.5 billion Age Well SG funding allocation targeting technological innovations that support ageing-in-place, creating opportunities for LBSA to access grants (Matthew Mohan, 2024).</p>
+          <h3 class="icp-subhead">Eldercare Technology Innovation</h3>
           <p>As Singapore is a leader in the medical and technological sectors, LBSA stands to benefit from innovations in eldercare technology. The integration of artificial intelligence, robotics, and digital health solutions into eldercare has gained significant momentum, with Singapore looking to AI to manage its fast-ageing population as 25% of residents will be 65 and above by 2030 (Handley, 2025). This gives LBSA opportunities to enhance preventive care and emergency response capabilities while reducing staff workload. In addition, advancements in wearable technology and remote health monitoring present significant expansion opportunities. Apart from eldercare technology, LBSA challenges stigma around ageing through I-Relate, an initiative involving an age-simulation suit that mimics common impairments seniors experience.</p>
+          <h3 class="icp-subhead">Demographic and Social Shifts</h3>
           <p>Singapore’s rapidly shifting demographics and social landscape threaten LBSA’s sustainability and scalability. As family structures grow smaller, with later marriages and greater workforce participation, traditional informal caregiving networks weaken. This drives a surge in demand for formal and community-based eldercare that may outpace available resources and staff (Sherlyn Seah &amp; Jalelah Abu Baker, 2023). The sandwich generation, referring to those who are both care recipients and caregivers, or those caring for the young and elderly, face increased stress too. In addition, the number of seniors living alone is set to rise from 77,000 in 2025 to 92,000 by 2030, heightening risks of social isolation and “lonely deaths” (Inclusive Spaces | Bridging Generations - Ageing Population | Frasers Property, 2025).</p>
+          <h3 class="icp-subhead">Staff and Volunteer Burnout</h3>
           <p>LBSA’s expanding service portfolio and growing beneficiary base place increasing demands on professional care staff and volunteer befrienders, creating a significant risk of burnout. As LBSA expands, staff and volunteers may have to juggle multiple roles without adequate rest or support (Julian Azfar, 2025). Volunteers, in particular, may struggle to balance LBSA commitments with professional and personal obligations, leading to higher attrition rates. If LBSA’s workforce does not expand, it risks losing its most valuable human resources, jeopardising service continuity and the organisation’s long-term sustainability.</p>
         </section>
         <section class="icp-chapter" id="pr-problems-opportunities">
           <h2>PR Problems/Opportunities</h2>
+          <h3 class="icp-subhead">Senior Loneliness and Stigma</h3>
           <p>Loneliness among seniors is a critical but underrecognised PR challenge that extends beyond living arrangements. Research indicates that up to 80% of the elderly who report chronic loneliness reside with family members, yet experience restricted support and low-quality relationships due to declining health or strained ties (Goh Yan Han, 2021). Despite this, seniors are reluctant to seek emotional or practical assistance because of pride, stigma, or unwillingness to be perceived as a burden (Jared Ng &amp; Yiyun Shou, 2023). Over 40% of Singaporeans aged 60 and above self-report loneliness, which is strongly correlated with poorer physical health, cognitive decline, and depression (Angelique Chan et al., 2023). With the number of Singaporean elderly living alone set to rise to 83,000 by 2030 (Michael, 2025), LBSA must confront deep-seated stigmas and misconceptions that hinder seniors and their families from engaging with vital community support services.</p>
+          <h3 class="icp-subhead">Youth Recruitment and Engagement Crisis</h3>
           <p>LBSA faces a recruitment and engagement crisis with youths. Many youths balancing professional and personal lives struggle to find time to volunteer, leaving LBSA struggling to attract and retain the volunteers who can bridge the generational divide. Communication barriers stemming from seniors’ preference for local dialects and youths’ comfort with English, as well as differing technological literacies, further widen the generational gap (Overcoming Language Barriers with Our Grands, 2025). Additionally, persistent ageism and cultural disconnects prevent authentic rapport: seniors feel alienated by fast-paced, digital society norms (Lim Boon Leng, 2024), and youth view eldercare activities as peripheral (Grace Yeoh, 2022). For intergenerational cohesion, community attitudes toward ageing and LBSA’s volunteer recruitment strategies must evolve.</p>
+          <h3 class="icp-subhead">Digital Divide Crisis</h3>
           <p>Singapore&#x27;s digital transformation into a Smart Nation has created a digital divide crisis that LBSA must tackle to ensure seniors are not left behind. Only 45% of seniors demonstrate willingness to try new technologies, which is compounded by health-related barriers, with 10% of older Singaporeans experiencing health-related difficulties that make smartphone and computer navigation challenging. As essential services and communication migrate online, seniors face increased isolation. LBSA must advocate for inclusive digital design and bridging programs lest seniors become increasingly marginalised in Singapore&#x27;s digital-first society.</p>
+          <h3 class="icp-subhead">Social Media Engagement Opportunity</h3>
           <p>LBSA can capitalise on social media as a PR opportunity: despite being active online, metrics suggest that LBSA fails to effectively reach and engage its audiences, mainly digital-native millennials and Gen Z. While LBSA’s social media may seem poised for success, showcasing authentic stories from volunteers and beneficiaries, and having them jump on social media trends, the lack of intergenerational content may cause the failure in connecting with youths. Eldercare organisations like LBSA inherently face barriers in making their causes relatable or exciting for youths on social media platforms, with algorithms favouring entertainment, lifestyle, and influencer-driven content (SocialTargeter, 2025). User-generated content presents opportunities for LBSA to amplify volunteer voices and experiences, creating organic peer-to-peer marketing that resonates more authentically with digital-native audiences. Volunteer-created narratives can demonstrate personal growth and emotional fulfilment that intergenerational volunteering provides. With intergenerational collaborative content creation, the relatability gap can be bridged.</p>
+          <h3 class="icp-subhead">Intergenerational Mentoring Program</h3>
           <p>LBSA has the opportunity to pioneer an intergenerational mentoring program that positions both seniors and youths as mentors. Through intergenerational interactions, the program aims to inculcate a positive and mature attitude towards ageing and seniors, developing next-generation citizens with greater empathy, patience, and intergenerational understanding. The digital divide issue can be alleviated with tech-savvy youths teaching seniors on digital literacy. This two-way mentoring model creates sustainable engagement by establishing reciprocal relationships where youths gain access to seniors’ life experiences and skills that formal education cannot replicate.</p>
+          <h3 class="icp-subhead">Corporate Social Responsibility Partnerships</h3>
           <p>LBSA can leverage Singapore’s growing focus on corporate social responsibility to create mutually beneficial structured programs that address eldercare needs. LBSA has a track record of successful partnerships that strategically position it to expand through innovative programs that align with corporate ESG goals. Existing partnerships include those with universities for research on the elderly, schools for intergenerational volunteering opportunities, and technology companies for the development of the eldercare technology under TechCare. By leveraging its strong partnership network, LBSA can tailor new initiatives that align with its corporate partners’ interests, whilst furthering its own goals.</p>
         </section>
         <section class="icp-chapter" id="publics">
@@ -593,29 +619,6 @@
       </article>
     </section>
 
-
-
-
-    <section class="section icp-foot" aria-labelledby="icp-feedback-heading">
-      <div class="icp-attribution">
-        <div class="icp-attribution__name">NIIK SEAH</div>
-        <div class="icp-attribution__id">E0958068</div>
-      </div>
-      <h2 id="icp-feedback-heading">Course feedback</h2>
-      <p class="icp-fulltext-note" style="margin-bottom: 18px;">
-        NM4208 Strategic Communications Design — instructor comments on this Integrated Communications Plan.
-      </p>
-      <ul class="feedback-list">
-        <li>Thank you, Niik, for this very detailed ICP on Lions Befrienders Service Association (LBSA). The paper demonstrates strong research and contextual understanding of LBSA’s history, structure, and operating environment. Your introduction is comprehensive, situating the origins of LBSA clearly within Singapore’s social history of resettlement, while your exposition of the organisation’s current operations is thorough and well-documented. This grounding in context provides a solid foundation for the rest of your plan.</li>
-        <li>The SWOT analysis is very well-developed and shows careful engagement with both internal capabilities and external trends. Strengths such as TechCare and LBSA’s organisational credibility are explained with concrete evidence, while weaknesses around financial vulnerabilities and staff retention are realistically analysed. Opportunities are convincingly tied to national initiatives such as Age Well SG and the Smart Nation push, which makes your analysis highly relevant. Threats are equally well-framed, particularly the sustainability challenges posed by shifting demographics. One area for improvement would be to avoid overloading the SWOT with too many sub-points under each heading; condensing and foregrounding the most actionable insights would strengthen the analytical sharpness.</li>
-        <li>Your identification of PR problems and opportunities is cogent. Issues such as loneliness among seniors, volunteer disengagement, and the digital divide are thoughtfully linked to communication challenges. I especially appreciated how you tied these to broader cultural factors like stigma and generational disconnect, which shows nuance. The opportunities section, including the intergenerational mentoring model, is compelling and actionable. The publics section also demonstrates proper application of Grunig’s Situational Theory of Publics, which is explicitly cited and systematically applied; this is an excellent use of theory in practice and strengthens the overall argument.</li>
-        <li>The strategic plan is ambitious and multi-pronged, covering a magazine, microsite, social media campaign, and brochures. Each tactic is described in detail with clear content ideas, target audiences, and distribution strategies. Importantly, you have articulated goals instead of SMART objectives for each, such as readership numbers for the magazine, youth volunteer sign-ups via the microsite, and social media engagement metrics; this requires refinement. I particularly liked the deliberate design adaptations for seniors in the magazine and brochures, showing sensitivity to accessibility.</li>
-        <li>However, in some cases, the plan assumes that volunteer and staff labour for design and distribution comes at “zero financial cost.” While this may be organisationally feasible, budgets should still account for hidden costs such as staff time, opportunity costs, and any unexpected production expenses just as a contingency plan; nitpicking here but good to consider. For example, the microsite is costed as no extra expense, but in practice there may be hosting or design-related overheads, and you should substantiate this with a reference to industry norms or in-house capacity.</li>
-        <li>The integration of tactics is strong, with clear synergy between print and digital publications, and a thoughtful sequencing that guides audiences from awareness to action. The Gantt Charts are clearly laid out in the appendix, showing timeframes for each tactic across the 12-month campaign cycle BUT specify the YEAR. This supports the strategic coherence of the plan. Your referencing is another strength: sources are extensive, properly cited, consistently formatted, and presented with hanging indents ☺</li>
-        <li>For further improvement, I would suggest tightening your narrative in places where detail begins to overwhelm; for example, some of the tactical descriptions could be made more concise without losing substance. Additionally, you could further highlight how these tactics build on one another beyond mere cross-promotion; what is the cumulative impact that LBSA gains from this synergy? Also, once again, refinement for SMART objectives.</li>
-        <li>Overall, this is a solid work done for the ICP for LBSA, Niik. I look forward to seeing these translated into actual publication in the final project! Thank you and I am very proud of you and your work on the ICP! ☺</li>
-      </ul>
-    </section>
 
     <section class="section icp-foot" aria-labelledby="icp-gantt-heading">
       <h2 id="icp-gantt-heading">Gantt Table</h2>
@@ -818,19 +821,67 @@
     </section>
 
   </main>
+  <script>
+    (() => {
+      const links = Array.from(document.querySelectorAll('.icp-toc__link'));
+      const sections = links
+        .map((link) => {
+          const id = link.getAttribute('href')?.slice(1);
+          const section = id ? document.getElementById(id) : null;
+          return section ? { id, link, section } : null;
+        })
+        .filter(Boolean);
 
-  <footer class="case-footer" aria-label="Project details">
-    <div class="case-footer__inner">
-      <div class="case-footer__grid">
-        <div class="case-footer__mark">
-          <em>tended with love and care 💐</em>
-        </div>
-        <div class="case-footer__meta">
-          <p class="case-footer__row"><span class="case-footer__k">Project Name</span> <span class="case-footer__v">Lions Befrienders</span></p>
-          <p class="case-footer__row"><span class="case-footer__k">Deliverable</span> <span class="case-footer__v">Integrated communications plan workspace</span></p>
-        </div>
-      </div>
-    </div>
-  </footer>
+      if (!sections.length) return;
+
+      const setActive = (id) => {
+        sections.forEach(({ id: sectionId, link }) => {
+          const isActive = sectionId === id;
+          link.classList.toggle('is-active', isActive);
+          if (isActive) {
+            link.setAttribute('aria-current', 'true');
+          } else {
+            link.removeAttribute('aria-current');
+          }
+        });
+      };
+
+      const updateActive = () => {
+        const anchorLine = 170;
+        let current = sections[0];
+        for (const item of sections) {
+          if (item.section.getBoundingClientRect().top <= anchorLine) {
+            current = item;
+          } else {
+            break;
+          }
+        }
+        setActive(current.id);
+      };
+
+      sections.forEach(({ id, link }) => {
+        link.addEventListener('click', () => {
+          setActive(id);
+          window.setTimeout(updateActive, 220);
+        });
+      });
+
+      const observer = new IntersectionObserver(updateActive, {
+        root: null,
+        threshold: [0, 0.1, 0.35, 0.65, 1],
+        rootMargin: '-18% 0px -60% 0px',
+      });
+
+      sections.forEach(({ section }) => observer.observe(section));
+      window.addEventListener('scroll', updateActive, { passive: true });
+      window.addEventListener('resize', updateActive);
+      window.addEventListener('hashchange', () => {
+        const id = window.location.hash.slice(1);
+        if (sections.some((item) => item.id === id)) setActive(id);
+        window.setTimeout(updateActive, 220);
+      });
+      updateActive();
+    })();
+  </script>
 </body>
 </html>

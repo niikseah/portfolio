@@ -505,6 +505,10 @@
       max-height: none;
       overflow-y: visible;
       scroll-snap-align: start;
+      display: grid;
+      grid-template-rows: var(--exp-lockup-height, 76px) var(--exp-meta-height, 36px) var(--exp-title-height, 2.4em) 1fr;
+      gap: 12px;
+      align-content: start;
       border-radius: 18px;
       border: 1px solid color-mix(in srgb, var(--electric-500) 24%, var(--border-1));
       background: color-mix(in srgb, var(--bg-2) 92%, var(--electric-500) 8%);
@@ -565,12 +569,34 @@
       --kind-hover-bg: #2f7d57;
     }
     .experience-row .card__meta {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 12px;
-      height: fit-content;
+      display: contents;
     }
-    .experience-row .company-logo-frame { justify-content: flex-start; }
+    .experience-row .company-lockup {
+      grid-row: 1;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      min-height: var(--exp-lockup-height, 76px);
+      min-width: 0;
+    }
+    .experience-row .company-meta-sub {
+      grid-row: 2;
+      display: inline-flex;
+      min-height: var(--exp-meta-height, 36px);
+      align-items: center;
+    }
+    .experience-row .card__title {
+      grid-row: 3;
+      min-height: var(--exp-title-height, 2.4em);
+      align-self: start;
+      margin-top: 0;
+      margin-bottom: 0;
+    }
+    .experience-row .experience-list {
+      grid-row: 4;
+      align-self: start;
+      margin-top: 0;
+    }
     .experience-row .company-period {
       color: var(--fg-3);
       font-family: var(--font-mono);
@@ -593,6 +619,9 @@
       align-items: center;
       gap: 24px;
       min-width: 0;
+    }
+    .experience-row .company-name {
+      align-self: center;
     }
     .company-name {
       font-family: var(--font-display);
@@ -618,22 +647,58 @@
       border: 0;
       padding: 4px;
     }
-    .experience-row .company-logo--dbs {
-      height: 48px;
-    }
-    .experience-row .company-logo--nus-dev-group {
-      height: 48px;
-    }
-    .experience-row .company-logo--shopee,
-    .experience-row .company-logo--govtech {
-      height: 56px;
-    }
     .experience-row .company-logo {
+      flex: 0 0 auto;
+      object-fit: contain;
+      object-position: left center;
+      padding: 0;
+      display: block;
+      width: auto;
+      min-width: 0;
+      max-width: 112px;
+      height: 48px;
+    }
+    .experience-row .company-logo--dbs {
+      width: 108px;
+      height: 36px;
+      max-width: 108px;
+    }
+    .experience-row .company-logo--jdi {
+      flex: 0 0 auto;
+      width: auto;
+      height: 36px;
+      max-width: 96px;
+      object-fit: contain;
       object-position: left center;
     }
-    .experience-row .card__title {
-      margin-top: 2px;
-      margin-bottom: 2px;
+    .experience-row .company-logo--nus-dev-group {
+      width: auto;
+      height: 48px;
+      max-width: 112px;
+    }
+    .experience-row .company-logo--nus-fintech {
+      width: 60px;
+      height: 60px;
+      max-width: 60px;
+      object-fit: cover;
+      object-position: left center;
+    }
+    .experience-row .company-logo--shopee {
+      width: 40px;
+      height: 56px;
+      max-width: 40px;
+    }
+    .experience-row .company-logo--govtech {
+      width: 112px;
+      height: 68px;
+      max-width: 112px;
+    }
+    .experience-row .company-logo--metercube {
+      width: 44px;
+      height: 48px;
+      max-width: 44px;
+      object-fit: cover;
+      object-position: left center;
     }
     .experience-row .card::-webkit-scrollbar {
       width: 8px;
@@ -909,24 +974,28 @@
                   <div className="card__meta">
                     <span className="company-lockup">
                       {exp.logo && (
-                        <span className="company-logo-frame">
-                          <img
-                            className={`company-logo${
-                              exp.company === 'DBS Bank'
-                                ? ' company-logo--dbs'
-                                : exp.company === 'NUS Developer Group'
-                                  ? ' company-logo--nus-dev-group'
-                                  : exp.company === 'Shopee'
-                                    ? ' company-logo--shopee'
-                                    : exp.company === 'GovTech'
-                                      ? ' company-logo--govtech'
-                                  : ''
-                            }`}
-                            src={exp.logo}
-                            alt={`${exp.company} logo`}
-                            loading="lazy"
-                          />
-                        </span>
+                        <img
+                          className={`company-logo${
+                            exp.company === 'DBS Bank'
+                              ? ' company-logo--dbs'
+                              : exp.company === 'Capital JDI'
+                                ? ' company-logo--jdi'
+                                : exp.company === 'Meter Cube Interiors'
+                                  ? ' company-logo--metercube'
+                                  : exp.company === 'NUS Fintech Society'
+                                    ? ' company-logo--nus-fintech'
+                                    : exp.company === 'NUS Developer Group'
+                                      ? ' company-logo--nus-dev-group'
+                                      : exp.company === 'Shopee'
+                                        ? ' company-logo--shopee'
+                                        : exp.company === 'GovTech'
+                                          ? ' company-logo--govtech'
+                                          : ''
+                          }`}
+                          src={exp.logo}
+                          alt={`${exp.company} logo`}
+                          loading="lazy"
+                        />
                       )}
                       <span className="company-name">{exp.company}</span>
                     </span>

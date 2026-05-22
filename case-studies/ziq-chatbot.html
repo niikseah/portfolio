@@ -3,43 +3,44 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://upload.wikimedia.org; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'self'" />
+  <meta name="referrer" content="no-referrer" />
+  <meta http-equiv="X-Content-Type-Options" content="nosniff" />
   <title>Ziq — Task chatbot (iP demo) | niik</title>
   <link rel="stylesheet" href="../design-system/colors_and_type.css" />
   <style>
     :root {
-      --paper:#f0f2f5; --paper-warm:#ffffff; --ink:#0f1729; --ink-soft:#3c445a; --ink-mute:#6b7388;
-      --rule:#dfe3e8; --blue:#5a9bd5; --blue-tint:#ebf1fb; --display:"Apple Garamond", Georgia, serif;
-      --body:"Segoe UI","Helvetica Neue",-apple-system,system-ui,sans-serif; --mono:"JetBrains Mono", ui-monospace, monospace;
+      --paper:#fafaf7; --paper-warm:#f4f2ec; --ink:#0f1729; --ink-soft:#3c445a; --ink-mute:#6b7388;
+      --rule:#e4e1d8; --blue:#2e5aac; --blue-tint:#ebf1fb; --display:"Apple Garamond", Georgia, serif;
+      --body:"Helvetica Neue",-apple-system,system-ui,sans-serif; --mono:"JetBrains Mono", ui-monospace, monospace;
     }
     * { box-sizing: border-box; margin: 0; padding: 0; }
-    body { font-family: var(--body); background: var(--paper); color: var(--ink); line-height: 1.55; -webkit-font-smoothing: antialiased; }
-    main { max-width: 1120px; margin: 0 auto; padding: 56px 24px 90px; }
-    h1 { font-family: var(--display); font-size: clamp(40px, 5.5vw, 68px); font-weight: 400; line-height: .98; letter-spacing: -.03em; margin-bottom: 14px; max-width: 18ch; }
-    .lede { max-width: 70ch; color: var(--ink-soft); font-size: 18px; margin-bottom: 24px; }
+    body { font-family: var(--body); background: var(--paper); color: var(--ink); line-height: 1.6; -webkit-font-smoothing: antialiased; }
+    main {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding-top: 56px;
+      padding-right: 24px;
+      padding-bottom: 0;
+      padding-left: 24px;
+    }
+    footer.case-footer {
+      margin-top: 56px !important;
+      padding-top: 0 !important;
+    }
+    h1 { font-family: var(--display); font-size: clamp(44px, 6vw, 74px); font-weight: 400; line-height: .98; letter-spacing: -.03em; margin-bottom: 16px; width: 100%; max-width: none; }
+    .lede { max-width: 72ch; color: var(--ink-soft); font-size: 18px; margin-bottom: 30px; }
     main > .cs-summary {
       width: 100%;
       max-width: none;
-      margin-top: 0;
+      margin-top: 16px;
       padding: 10px 0;
-      border-top: none;
-      border-bottom: none;
+      border-top: 1px solid var(--rule);
+      border-bottom: 1px solid var(--rule);
       display: grid;
       grid-template-columns: minmax(0, max-content);
       justify-content: start;
-      position: relative;
     }
-    main > .cs-summary::before,
-    main > .cs-summary::after {
-      content: "";
-      position: absolute;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 100vw;
-      border-top: 1px solid var(--rule);
-      pointer-events: none;
-    }
-    main > .cs-summary::before { top: 0; }
-    main > .cs-summary::after { bottom: 0; }
     main > .cs-summary > div {
       display: grid;
       gap: 4px;
@@ -52,8 +53,11 @@
       letter-spacing: .1em;
     }
     main > .cs-summary dd {
-      font-size: 15px;
-      line-height: 1.4;
+      font-size: 1rem;
+      line-height: 1.2;
+      min-height: 30px;
+      display: inline-flex;
+      align-items: center;
     }
     .tool-chip {
       display: inline-flex;
@@ -89,10 +93,16 @@
       object-fit: cover;
       display: block;
     }
-    .tool-name { line-height: 1.2; }
+    .tool-name {
+      font-family: var(--body);
+      font-size: 14px;
+      font-weight: 400;
+      letter-spacing: 0;
+      line-height: 1.2;
+    }
     .meta { font-family: var(--mono); font-size: 12px; color: var(--ink-mute); margin-bottom: 22px; letter-spacing: .03em; }
-    .section { border: 1px solid var(--rule); border-radius: 14px; background: #fff; padding: 16px; margin-top: 18px; }
-    .section h2 { font-family: var(--display); font-size: 28px; font-weight: 500; margin-bottom: 8px; }
+    .section { border: 1px solid var(--rule); border-radius: 14px; background: #fff; padding: 18px; margin-top: 24px; }
+    .section h2 { font-family: var(--display); font-size: 30px; font-weight: 500; margin-bottom: 12px; }
     .section p { color: var(--ink-soft); margin-bottom: 8px; }
     .code { margin-top: 8px; border: 1px solid var(--rule); border-radius: 10px; background: var(--paper-warm); padding: 10px 12px; font-family: var(--mono); font-size: 13px; white-space: pre-wrap; word-break: break-word; }
     .btn {
@@ -178,12 +188,15 @@
       display: flex;
       flex-direction: column;
     }
-    .commands-card h3 {
-      font-size: 16px;
-      font-weight: 700;
-      margin: 0 0 8px;
-      padding: 4px 0;
+    .commands-card h2 {
+      font-family: var(--display);
+      font-size: 30px;
+      font-weight: 500;
+      margin: 0 0 12px;
+      padding: 0;
       color: var(--ink);
+      letter-spacing: -0.02em;
+      line-height: 1.1;
     }
     .commands-card p {
       margin: 0 0 10px;
@@ -221,8 +234,9 @@
   </style>
   <link rel="stylesheet" href="../shared/shell.css" />
   <link rel="stylesheet" href="../shared/phase1-ds-bridge.css" />
+  <link rel="stylesheet" href="../shared/case-study-longform.css" />
 </head>
-<body>
+<body class="case-study-longform">
   <header class="project-topbar">
     <div class="project-topbar__inner">
       <a class="project-topbar__back" href="../portfolio.html" onclick="if (window.history.length > 1) { event.preventDefault(); window.history.back(); }">← Back</a>
@@ -247,6 +261,10 @@
               <span class="tool-name">Java</span>
             </span>
           </dd>
+        </div>
+        <div>
+          <dt>Focus</dt>
+          <dd>Software Engineering</dd>
         </div>
       </dl>
 
@@ -273,13 +291,13 @@
             </div>
           </div>
           <aside class="commands-card" aria-label="List of supported commands">
-            <h3>List of Commands</h3>
+            <h2>List of Commands</h2>
             <ul class="commands-list">
               <li><code>help</code> - show all available commands</li>
               <li><code>list</code> - show current tasks</li>
               <li><code>todo &lt;task&gt;</code> - add a todo task</li>
-              <li><code>deadline &lt;task&gt; /by &lt;DDMMYYYY&gt; [&lt;HHmm&gt;]</code> - add a deadline task</li>
-              <li><code>event &lt;task&gt; /from &lt;DDMMYYYY&gt; &lt;HHmm&gt; /to &lt;DDMMYYYY&gt; &lt;HHmm&gt;</code> - add an event task</li>
+              <li><code>deadline &lt;task&gt; /by &lt;DDMMYYYY&gt; [&lt;HHmm&gt;]</code> - add a deadline</li>
+              <li><code>event &lt;task&gt; /from &lt;DDMMYYYY&gt; &lt;HHmm&gt; /to &lt;DDMMYYYY&gt; &lt;HHmm&gt;</code> - add an event</li>
               <li><code>mark &lt;index&gt;</code> / <code>unmark &lt;index&gt;</code> - update task status</li>
               <li><code>delete &lt;index&gt;</code> - remove a task</li>
               <li><code>find &lt;keyword&gt;</code> - search tasks by keyword</li>
@@ -297,11 +315,9 @@
   <footer class="case-footer" aria-label="Project details">
     <div class="case-footer__inner">
       <div class="case-footer__grid">
-        <div class="case-footer__mark">
-          <em>tended with love and care 💐</em>
-        </div>
         <div class="case-footer__meta">
           <p class="case-footer__row"><span class="case-footer__k">Course</span> <span class="case-footer__v">CS2103 Software Engineering</span></p>
+          <p class="case-footer__row"><span class="case-footer__k">Tool</span> <span class="case-footer__v">Java</span></p>
         </div>
       </div>
     </div>
@@ -908,11 +924,14 @@
     }
   }
 
+  const MAX_INPUT_LENGTH = 280;
+  const MIN_SEND_INTERVAL_MS = 120;
   const chatLog = document.getElementById('chatLog');
   const chatInput = document.getElementById('chatInput');
   const sendBtn = document.getElementById('sendBtn');
   const newSessionBtn = document.getElementById('newSessionBtn');
   let session = new ZiqSession();
+  let lastSendAt = 0;
 
   function appendMsg(className, text) {
     if (className === 'sys') {
@@ -959,19 +978,29 @@
     if (exit) appendMsg('sys', 'Session ended.');
   }
 
-  function resetSession() {
+  function resetSession({ focusInput = true } = {}) {
     chatLog.innerHTML = '';
     session = new ZiqSession();
     welcome();
     chatInput.disabled = false;
     sendBtn.disabled = false;
-    chatInput.focus();
+    if (focusInput) {
+      chatInput.focus();
+    }
   }
 
   function send() {
+    const now = Date.now();
+    if (now - lastSendAt < MIN_SEND_INTERVAL_MS) return;
+    lastSendAt = now;
+
     const text = chatInput.value;
     chatInput.value = '';
     if (!text.trim()) return;
+    if (text.length > MAX_INPUT_LENGTH) {
+      appendMsg('sys', `Input too long. Keep commands under ${MAX_INPUT_LENGTH} characters.`);
+      return;
+    }
     runUserLine(text);
   }
 
@@ -979,7 +1008,7 @@
   chatInput.addEventListener('keydown', (e) => {
     if (e.key === 'Enter') send();
   });
-  newSessionBtn.addEventListener('click', resetSession);
+  newSessionBtn.addEventListener('click', () => resetSession({ focusInput: true }));
   document.querySelectorAll('[data-cmd]').forEach((btn) => {
     btn.addEventListener('click', () => {
       const cmd = (btn.getAttribute('data-cmd') || '').trim();
@@ -989,8 +1018,10 @@
     });
   });
 
-  resetSession();
+  resetSession({ focusInput: false });
+  window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
 })();
   </script>
+  <script src="../shared/case-study-longform.js"></script>
 </body>
 </html>

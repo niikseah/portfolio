@@ -206,11 +206,7 @@
 
   // ─── Footer ─────────────────────────────────────────────
   const Footer = () =>
-    e(
-      'footer',
-      { className: 'footer', 'aria-label': 'Site footer' },
-      e('em', null, 'tended with love and care 💐'),
-    );
+    e('footer', { className: 'footer', 'aria-label': 'Site footer' });
 
   /** Case-study / project detail pages — matches `footer.case-footer` in shell.css */
   const CaseStudySummary = ({ items = [], className = 'cs-summary', style }) => {
@@ -233,79 +229,7 @@
   };
 
   /** Case-study / project detail pages — matches `footer.case-footer` in shell.css */
-  const CaseStudyShellFooter = ({ project }) => {
-    const p = project && typeof project === 'object' ? project : {};
-    const kindLabel = String(p.kindLabel || p.kind || 'project').trim();
-    const focus = String(p.focusLabel || p.kindLabel || p.kind || '—').trim() || '—';
-    const year = p.year != null && String(p.year).trim() ? String(p.year) : '—';
-    const role = String(p.role || '—').trim() || '—';
-    const tools = String(p.toolsLabel || p.tools || '').trim();
-    const hideKindFooter = p.hideKindFooter === true;
-    const hideYearFooter = p.hideYearFooter === true;
-    const customFooterRows = Array.isArray(p.footerRows)
-      ? p.footerRows
-          .filter((row) => row && String(row.label || '').trim() && String(row.value || '').trim())
-          .map((row, idx) =>
-            e(
-              'p',
-              { className: 'case-footer__row', key: `footer-row-${idx}` },
-              e('span', { className: 'case-footer__k' }, String(row.label).trim()),
-              ' ',
-              e('span', { className: 'case-footer__v' }, String(row.value).trim()),
-            )
-          )
-      : [];
-    return e(
-      'footer',
-      { className: 'case-footer', 'aria-label': 'Project details' },
-      e(
-        'div',
-        { className: 'case-footer__inner' },
-        e(
-          'div',
-          { className: 'case-footer__grid' },
-          e(
-            'div',
-            { className: 'case-footer__mark' },
-            e('em', null, 'tended with love and care 💐'),
-          ),
-          e(
-            'div',
-            { className: 'case-footer__meta' },
-            e(
-              'p',
-              { className: 'case-footer__row' },
-              e('span', { className: 'case-footer__k' }, hideKindFooter ? 'Focus' : 'Kind'),
-              ' ',
-              e('span', { className: 'case-footer__v' }, hideKindFooter ? focus : kindLabel),
-            ),
-            hideYearFooter ? null : e(
-              'p',
-              { className: 'case-footer__row' },
-              e('span', { className: 'case-footer__k' }, 'Year'),
-              ' ',
-              e('span', { className: 'case-footer__v' }, year),
-            ),
-            e(
-              'p',
-              { className: 'case-footer__row' },
-              e('span', { className: 'case-footer__k' }, 'Role'),
-              ' ',
-              e('span', { className: 'case-footer__v' }, role),
-            ),
-            tools ? e(
-              'p',
-              { className: 'case-footer__row' },
-              e('span', { className: 'case-footer__k' }, 'Tools'),
-              ' ',
-              e('span', { className: 'case-footer__v' }, tools),
-            ) : null,
-            ...customFooterRows,
-          ),
-        ),
-      ),
-    );
-  };
+  const CaseStudyShellFooter = () => null;
 
   // ─── Eyebrow ────────────────────────────────────────────
   const Eyebrow = ({ children, style }) =>
@@ -323,7 +247,7 @@
     if (normalized.includes('research')) return { key: 'research', label: 'research' };
     if (normalized.includes('graphic')) return { key: 'graphic', label: 'graphic' };
     if (normalized.includes('director of photography') || normalized.includes('videography')) {
-      return { key: 'video', label: 'video' };
+      return { key: 'video', label: 'videography' };
     }
     if (normalized.includes('engineer') || normalized.includes('developer') || normalized.includes('coding')) {
       return { key: 'engineering', label: 'software engineering' };
@@ -431,7 +355,7 @@
         e(Kind, { type: `status-${statusKey}` }, statusLabelMap[statusKey]),
       ),
       e('h3', { className: 'card__title' }, p.title || e(Slot, null, 'project title')),
-      e('p', { className: 'card__excerpt' }, excerptNode),
+      !p.hideExcerpt && e('p', { className: 'card__excerpt' }, excerptNode),
       e('div', { className: 'card__foot' },
         e('span', { className: 'arrow' }, 'read →'),
       ),

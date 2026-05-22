@@ -21,11 +21,48 @@
     .cta { margin-top: 34px; display: inline-block; border: 1px solid var(--border-1); border-radius: 999px; padding: 10px 16px; text-decoration: none; color: var(--fg-1); }
     .cta:hover { border-color: var(--border-strong); }
     .inline-image { width: 100%; border: 1px solid var(--border-1); border-radius: 10px; margin: 10px 0 14px; }
+    .tool-list { display: inline-flex; align-items: center; flex-wrap: wrap; gap: 10px; }
+    .tool-chip { display: inline-flex; align-items: center; gap: 6px; }
+    .tool-logo { width: 22px; height: 22px; display: inline-grid; place-items: center; flex: 0 0 auto; }
+    .tool-logo--figma svg { width: 15px; height: 22px; display: block; }
+    .tool-logo--balsamiq {
+      border-radius: 6px;
+      background: #d7352a;
+      color: #fff;
+      font: 700 12px/1 Arial, sans-serif;
+      letter-spacing: -0.03em;
+    }
+    body.case-study-longform .hero-backdrop::before,
+    body.case-study-longform .hero-backdrop::after {
+      display: none;
+    }
+    .tldr-toggle {
+      margin: 0 0 28px;
+      display: flex;
+      justify-content: flex-start;
+    }
+    .tldr-toggle__button {
+      border: 1px solid var(--case-rule);
+      border-radius: 999px;
+      background: #fff;
+      color: var(--case-ink);
+      cursor: pointer;
+      font: 600 0.92rem/1.2 "Helvetica Neue", -apple-system, system-ui, sans-serif;
+      padding: 10px 16px;
+      transition: border-color 160ms ease, color 160ms ease, background 160ms ease;
+    }
+    .tldr-toggle__button:hover,
+    .tldr-toggle__button[aria-expanded="true"] {
+      border-color: var(--case-blue);
+      background: var(--case-blue-tint);
+      color: var(--case-blue);
+    }
   </style>
   <link rel="stylesheet" href="../shared/shell.css" />
   <link rel="stylesheet" href="../shared/phase1-ds-bridge.css" />
+  <link rel="stylesheet" href="../shared/case-study-longform.css" />
 </head>
-<body>
+<body class="case-study-longform">
   <header class="project-topbar">
     <div class="project-topbar__inner">
       <a class="project-topbar__back" href="../portfolio.html" onclick="if (window.history.length > 1) { event.preventDefault(); window.history.back(); }">← Back</a>
@@ -35,25 +72,47 @@
     <article class="article">
       <h1>Fusion Scanner</h1>
       <h3>An AI-powered browser extension that helps multilingual readers comprehend dense English text</h3>
-      <p><strong>Role:</strong> Product Designer &amp; Researcher (Team of 5)</p>
-      <p><strong>Timeline:</strong> 12 weeks · Academic project, CS3240 (Interaction Design)</p>
-      <p><strong>Tools:</strong> Figma, Balsamiq</p>
-      <p><strong>My contributions:</strong> [CONFIRM — e.g., led usability testing, designed the Summarise panel flow, owned the heuristic evaluation, etc.]</p>
       <dl class="cs-summary">
-        <div><dt>Course</dt><dd>CS3240 Interaction Design</dd></div>
-        <div><dt>Role</dt><dd>Product Designer &amp; Researcher</dd></div>
-        <div><dt>Timeline</dt><dd>12 weeks</dd></div>
-        <div><dt>Tools</dt><dd>Figma, Balsamiq</dd></div>
+        <div><dt>Role</dt><dd>Product Designer</dd></div>
+        <div><dt>Team</dt><dd>Team of 4</dd></div>
+        <div><dt>Timeline</dt><dd>12 weeks, up to first redesign of Hi-Fi Prototype</dd></div>
+        <div>
+          <dt>Tools</dt>
+          <dd>
+            <span class="tool-list">
+              <span class="tool-chip">
+                <span class="tool-logo tool-logo--figma" aria-hidden="true">
+                  <svg viewBox="0 0 38 57" role="img" focusable="false">
+                    <path fill="#0ACF83" d="M9.5 57C14.747 57 19 52.747 19 47.5V38H9.5C4.253 38 0 42.253 0 47.5S4.253 57 9.5 57Z"/>
+                    <path fill="#A259FF" d="M0 28.5C0 23.253 4.253 19 9.5 19H19V38H9.5C4.253 38 0 33.747 0 28.5Z"/>
+                    <path fill="#F24E1E" d="M0 9.5C0 4.253 4.253 0 9.5 0H19V19H9.5C4.253 19 0 14.747 0 9.5Z"/>
+                    <path fill="#FF7262" d="M19 0H28.5C33.747 0 38 4.253 38 9.5S33.747 19 28.5 19H19V0Z"/>
+                    <path fill="#1ABCFE" d="M38 28.5C38 33.747 33.747 38 28.5 38S19 33.747 19 28.5S23.253 19 28.5 19S38 23.253 38 28.5Z"/>
+                  </svg>
+                </span>
+                <span>Figma</span>
+              </span>
+              <span class="tool-chip">
+                <span class="tool-logo tool-logo--balsamiq" aria-hidden="true">B</span>
+                <span>Balsamiq</span>
+              </span>
+            </span>
+          </dd>
+        </div>
       </dl>
       <hr>
-      <h2>TL;DR</h2>
-      <p>Multilingual readers — international students, immigrants, language learners — routinely abandon dense English articles because comprehension friction outweighs payoff. We designed <strong>Fusion Scanner</strong>, a browser extension that layers AI summarisation, in-context definitions, and exportable annotations onto any web page. Fusion Scanner is a web extension designed to enhance the reading experience for users facing challenges such as language barriers, learning disabilities (e.g., ADHD, dyslexia), or the overwhelming nature of dense digital content. The tool focuses on three key tasks: 1. Summarising texts 2. Defining unfamiliar terms 3. Enabling text import/export with annotation capabilities.</p>
-      <p>After two rounds of testing (5 usability participants + heuristic audit against Weinschenk&#x27;s principles), we shipped <strong>9 design changes</strong> that resolved every major (severity 3) heuristic violation we identified. The strongest signal: all five testers completed all four core tasks, and three of five spontaneously asked when the tool would be available to use.</p>
-      <h2>Introduction</h2>
-      <p>The project was done in a group of 4 for the course <a href="https://nusmods.com/courses/CS3240/interaction-design" target="_blank" rel="noopener noreferrer">CS3240: Interaction Design</a> taken in National University of Singapore (NUS), up to the 1st redesign of the hi-fi design.</p>
+      <div class="tldr-toggle">
+        <button class="tldr-toggle__button" type="button" aria-expanded="false" aria-controls="fusion-tldr fusion-full-story">
+          Show TL;DR
+        </button>
+      </div>
+      <section class="tldr-section" id="fusion-tldr" hidden>
+        <h2>TL;DR</h2>
+        <p>Multilingual readers — international students, immigrants, language learners — routinely abandon dense English articles because comprehension friction outweighs payoff. We designed <strong>Fusion Scanner</strong>, a browser extension that layers AI summarisation, in-context definitions, and exportable annotations onto any web page. Fusion Scanner is a web extension designed to enhance the reading experience for users facing challenges such as language barriers, learning disabilities (e.g., ADHD, dyslexia), or the overwhelming nature of dense digital content. The tool focuses on three key tasks: 1. Summarising texts 2. Defining unfamiliar terms 3. Enabling text import/export with annotation capabilities.</p>
+        <p>After two rounds of testing (5 usability participants + heuristic audit against Weinschenk&#x27;s principles), we shipped <strong>9 design changes</strong> that resolved every major (severity 3) heuristic violation we identified. The strongest signal: all five testers completed all four core tasks, and three of five spontaneously asked when the tool would be available to use.</p>
+      </section>
+      <div class="full-story-section" id="fusion-full-story">
       <h2>Problem</h2>
-      <p>For many, reading in our native language is a privilege and comfort we take for granted. For others, it is a daunting challenge that they have to overcome. Reading is one of the most important ways to gain knowledge about the world around us, but numerous underlying factors make reading more difficult than it should be.</p>
-      <p><strong>Combined effect of current tools and how information is presented</strong></p>
       <p>The digital revolution has expanded access to knowledge but also overwhelmed readers with excessive information. Skimming and multitasking have replaced deep reading, fostering a preference for concise content. Additionally, static text often lacks engagement, while digital distractions like notifications and app-switching further disrupt focus. These factors collectively contribute to a fragmented reading experience, making it more difficult for individuals to absorb and retain information effectively.</p>
       <p><strong>Nature of content</strong></p>
       <ol>
@@ -293,17 +352,14 @@
       <p>2. <strong>Mental model &gt; visual cleverness.</strong> The &quot;From Highlighted&quot; toggle was visually elegant and functionally confusing. Plain language (&quot;Back to Full Summary&quot;) wins.</p>
       <p>3. <strong>AI features need trust scaffolding.</strong> Granular controls, source citations, and feedback loops aren&#x27;t nice-to-haves — they&#x27;re the difference between an AI feature people use once and one they integrate into a workflow.</p>
       <hr>
-      <p><em>Built with: Chin Jun An, Niik Seah, Ning Xinran, Zhewen Zachary Tao, Tang Weichun. Course: CS3240, NUS, supervised by Prof. Zhao Shengdong and TA Aakansha.</em></p>
       <a class="cta" href="fusion-scanner-tldr.html">Read TL;DR version</a>
+      </div>
     </article>
   </main>
 
   <footer class="case-footer" aria-label="Project details">
     <div class="case-footer__inner">
       <div class="case-footer__grid">
-        <div class="case-footer__mark">
-          <em>tended with love and care 💐</em>
-        </div>
         <div class="case-footer__meta">
           <p class="case-footer__row"><span class="case-footer__k">Project Name</span> <span class="case-footer__v">Fusion Scanner</span></p>
           <p class="case-footer__row"><span class="case-footer__k">Course</span> <span class="case-footer__v">CS3240 · NUS</span></p>
@@ -313,5 +369,30 @@
       </div>
     </div>
   </footer>
+  <script>
+    (() => {
+      const section = document.getElementById('fusion-tldr');
+      const fullStory = document.getElementById('fusion-full-story');
+      const button = document.querySelector('.tldr-toggle__button');
+      if (!section || !fullStory || !button) return;
+
+      const setOpen = (isOpen) => {
+        section.hidden = !isOpen;
+        fullStory.hidden = isOpen;
+        button.setAttribute('aria-expanded', String(isOpen));
+        button.textContent = isOpen ? 'Show full story' : 'Show TL;DR';
+        const nav = document.querySelector('.case-toc');
+        if (nav) nav.hidden = isOpen;
+      };
+
+      button.addEventListener('click', () => {
+        const isOpen = button.getAttribute('aria-expanded') !== 'true';
+        setOpen(isOpen);
+      });
+
+      setOpen(false);
+    })();
+  </script>
+  <script src="../shared/case-study-longform.js"></script>
 </body>
 </html>

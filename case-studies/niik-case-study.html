@@ -67,7 +67,7 @@
 
   /* ===== HERO ===== */
   .hero {
-    padding: 96px 0 64px;
+    padding: 96px 0 32px;
     border-bottom: none;
     position: relative;
   }
@@ -861,7 +861,7 @@
   @media (max-width: 768px) {
     .project-topbar__inner { padding-left: max(24px, env(safe-area-inset-left, 0px)); padding-right: max(24px, env(safe-area-inset-right, 0px)); }
     .container { padding: 0 24px; }
-    .hero { padding: 56px 0 40px; }
+    .hero { padding: 56px 0 24px; }
     .hero-meta { flex-direction: column; gap: 8px; margin-bottom: 24px; }
     .hero-decoration { display: none; }
     .artifact { padding-top: 28px; }
@@ -883,8 +883,9 @@
   <link rel="stylesheet" href="../design-system/colors_and_type.css" />
   <link rel="stylesheet" href="../shared/shell.css" />
   <link rel="stylesheet" href="../shared/phase1-ds-bridge.css" />
+  <link rel="stylesheet" href="../shared/case-study-longform.css" />
 </head>
-<body>
+<body class="case-study-longform">
 
 <!-- ===== TOP BAR ===== -->
 <header class="project-topbar">
@@ -930,11 +931,7 @@
       </div>
       <div>
         <dt>Focus</dt>
-        <dd>Graphic</dd>
-      </div>
-      <div>
-        <dt>Role</dt>
-        <dd>Graphic Designer</dd>
+        <dd>Graphic Design</dd>
       </div>
     </dl>
 
@@ -1058,9 +1055,6 @@
 <footer class="case-footer" aria-label="Project details">
   <div class="case-footer__inner">
     <div class="case-footer__grid">
-      <div class="case-footer__mark">
-        <em>tended with love and care 💐</em>
-      </div>
       <div class="case-footer__meta">
         <p class="case-footer__row"><span class="case-footer__k">Project Name</span> <span class="case-footer__v">Brand Style Guide</span></p>
         <p class="case-footer__row"><span class="case-footer__k">Focus</span> <span class="case-footer__v">Graphic Design</span></p>
@@ -1237,5 +1231,6 @@
   renderPdf();
 </script>
 
+  <script src="../shared/case-study-longform.js"></script>
 </body>
 </html>

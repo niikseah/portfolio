@@ -146,7 +146,7 @@ export default function FlexijioCaseStudy() {
           borderBottom: "1px solid #E5E7EB",
         }}
       >
-        <div className="topbar-inner max-w-5xl mx-auto w-full px-6 py-4 flex items-center justify-between gap-4 flex-wrap">
+        <div className="topbar-inner max-w-6xl mx-auto w-full px-6 py-4 flex items-center justify-between gap-4 flex-wrap">
           <div className="flex items-center gap-2 min-w-0">
             <Star4 size={14} fill="#1E3A8A" />
             <span style={{ fontFamily: "Georgia, serif", fontSize: "15px", letterSpacing: "0.02em", color: "#1E3A8A" }}>
@@ -184,7 +184,7 @@ export default function FlexijioCaseStudy() {
           </div>
         </div>
 
-        <div className="topbar-inner border-t max-w-5xl mx-auto w-full px-4 sm:px-6 pb-3 pt-1" style={{ borderColor: "rgba(229, 231, 235, 0.8)" }}>
+        <div className="topbar-inner border-t max-w-6xl mx-auto w-full px-4 sm:px-6 pb-3 pt-1" style={{ borderColor: "rgba(229, 231, 235, 0.8)" }}>
           <nav aria-label="Case study sections">
             <ul className="flex flex-wrap items-center gap-0 gap-y-2 justify-end sm:justify-start text-[13px] sm:text-sm">
               {NAV_LINKS_FULL.map((item, idx) => (
@@ -218,7 +218,7 @@ export default function FlexijioCaseStudy() {
 
       {/* Footer */}
       <footer className="relative z-10 border-t mt-24" style={{ borderColor: "#E5E7EB", backgroundColor: "#FFFFFF" }}>
-        <div className="max-w-5xl mx-auto px-6 py-12">
+        <div className="max-w-6xl mx-auto px-6 py-12">
           <div className="flex items-start justify-between flex-wrap gap-6">
             <div>
               <div className="flex items-center gap-2 mb-3">
@@ -245,7 +245,7 @@ export default function FlexijioCaseStudy() {
 // ============================================================================
 function TldrView({ Star4 }) {
   return (
-    <main className="relative z-10 max-w-5xl mx-auto px-6 pt-16 pb-12">
+    <main className="relative z-10 max-w-6xl mx-auto px-6 pt-16 pb-12">
       {/* Eyebrow */}
       <div className="flex items-center gap-2 mb-6">
         <div style={{ width: "32px", height: "1px", backgroundColor: "#1E3A8A" }} />
@@ -281,7 +281,7 @@ function TldrView({ Star4 }) {
         ))}
       </div>
 
-      <div className="mt-16 max-w-4xl">
+      <div className="mt-16 max-w-5xl">
         <p className="text-base" style={{ color: "#374151", lineHeight: 1.7, fontFamily: "Georgia, serif" }}>
           FlexiJio is a fitness desktop video conferencing platform designed for office workers (18-63 years old) to engage in structured, community-driven workouts. It offers:
         </p>
@@ -384,7 +384,7 @@ function TldrView({ Star4 }) {
 // ============================================================================
 function FullView({ Star4 }) {
   return (
-    <main className="relative z-10 max-w-5xl mx-auto px-6 pt-12 pb-12">
+    <main className="relative z-10 max-w-6xl mx-auto px-6 pt-12 pb-12">
       {/* Hero */}
       <Hero Star4={Star4} />
 

@@ -117,6 +117,30 @@
       color: var(--cs-ink);
       line-height: 1.5;
     }
+    .tool-logo-value {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .tool-logo {
+      width: 22px;
+      height: 22px;
+      border-radius: 6px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      flex: 0 0 auto;
+      font-size: 11px;
+      font-weight: 700;
+      line-height: 1;
+      letter-spacing: -0.02em;
+    }
+    .tool-logo--premiere {
+      color: #d8b9ff;
+      background: #2b124d;
+      border: 1px solid #7e55d7;
+      box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.08);
+    }
     .cs-view-toggle {
       margin-top: 22px;
       display: inline-flex;
@@ -552,8 +576,9 @@
   </style>
   <link rel="stylesheet" href="../shared/shell.css" />
   <link rel="stylesheet" href="../shared/phase1-ds-bridge.css" />
+  <link rel="stylesheet" href="../shared/case-study-longform.css" />
 </head>
-<body>
+<body class="case-study-longform">
   <div id="root"></div>
 
   <script type="text/babel" data-presets="env,react">
@@ -596,6 +621,39 @@
       );
     }
 
+    function renderToolValue(value) {
+      const label = String(value || '').trim();
+      if (label !== 'Adobe Premiere Pro') return value;
+      return (
+        <span className="tool-logo-value">
+          <span className="tool-logo tool-logo--premiere" aria-hidden="true">Pr</span>
+          <span>{label}</span>
+        </span>
+      );
+    }
+
+    function slugifyHeading(value) {
+      return String(value || '')
+        .toLowerCase()
+        .replace(/&/g, ' and ')
+        .replace(/[^a-z0-9]+/g, '-')
+        .replace(/^-+|-+$/g, '')
+        .slice(0, 64);
+    }
+
+    function CaseToc({ items = [] }) {
+      const links = items.filter((item) => item && item.id && item.label);
+      if (!links.length) return null;
+      return (
+        <nav className="case-toc" aria-label="In this document">
+          <span className="case-toc__label">Jump to</span>
+          {links.map((item) => (
+            <a className="case-toc__link" href={`#${item.id}`} key={item.id}>{item.label}</a>
+          ))}
+        </nav>
+      );
+    }
+
     function App() {
       const revealDelay = (step) => ({ animationDelay: `${step * 70}ms` });
       const params = new URLSearchParams(window.location.search);
@@ -609,6 +667,13 @@
       const hasTldr = Array.isArray(details?.tldrSections) && details.tldrSections.length > 0;
       const isTldrView = hasTldr && viewMode === 'tldr';
       const contentSections = isTldrView ? details.tldrSections : details.sections;
+      const sectionTocItems = (contentSections || []).map((section, idx) => ({
+        id: `section-${idx + 1}-${slugifyHeading(section.header) || 'section'}`,
+        label: section.header,
+      }));
+      const galleryTocItem = details.gallery && details.gallery.length > 0
+        ? { id: 'gallery', label: 'Gallery' }
+        : null;
       React.useEffect(() => {
         if (hasTldr) {
           setViewMode('tldr');
@@ -658,38 +723,42 @@
             </header>
             <article className="mo-page">
               <h1 className="mo-title">{project.title}</h1>
+              <p className="mo-subtitle">{details.subtitle}</p>
               <CaseStudySummary
                 className="cs-summary"
                 items={[
                   { label: 'Focus', value: details.focus || project.focusLabel || project.kindLabel },
                   { label: 'Role', value: project.role },
-                  { label: 'Tools', value: details.tools || project.toolsLabel },
+                  { label: 'Tools', value: renderToolValue(details.tools || project.toolsLabel) },
                 ]}
               />
               {(details.videoUrl || details.heroImage) && (
-                <div className="mo-cover">
-                  {details.videoUrl ? (
-                    <div className="mo-video-frame">
-                      <iframe
-                        src={details.videoUrl}
-                        title={`${project.title} video`}
-                        loading="lazy"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                        allowFullScreen
-                      />
-                    </div>
-                  ) : (
-                    <div className="mo-video-placeholder">
-                      <div className="mo-video-placeholder__inner">
-                        <div className="mo-video-placeholder__play" aria-hidden="true">▶</div>
-                        <div className="mo-video-placeholder__title">Video Placeholder</div>
-                        <p className="mo-video-placeholder__text">
-                          Add the YouTube embed URL in project data to show the documentary here.
-                        </p>
+                <section className="mo-section" id="video">
+                  <h2>Video</h2>
+                  <div className="mo-cover">
+                    {details.videoUrl ? (
+                      <div className="mo-video-frame">
+                        <iframe
+                          src={details.videoUrl}
+                          title={`${project.title} video`}
+                          loading="lazy"
+                          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                          allowFullScreen
+                        />
                       </div>
-                    </div>
-                  )}
-                </div>
+                    ) : (
+                      <div className="mo-video-placeholder">
+                        <div className="mo-video-placeholder__inner">
+                          <div className="mo-video-placeholder__play" aria-hidden="true">▶</div>
+                          <div className="mo-video-placeholder__title">Video Placeholder</div>
+                          <p className="mo-video-placeholder__text">
+                            Add the YouTube embed URL in project data to show the documentary here.
+                          </p>
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                </section>
               )}
             </article>
             <CaseStudyShellFooter project={{ ...project, hideKindFooter: true, hideYearFooter: true }} />
@@ -731,7 +800,7 @@
                   style={revealDelay(5)}
                   items={[
                     { label: 'Timeline', value: details.timeline },
-                    { label: 'Tools', value: details.tools },
+                    { label: 'Tools', value: renderToolValue(details.tools) },
                     { label: 'Focus', value: details.focus || project.kindLabel },
                     { label: 'Role', value: project.role },
                   ]}
@@ -760,10 +829,11 @@
                   </div>
                 )}
               </section>
+              <CaseToc items={[...sectionTocItems, galleryTocItem].filter(Boolean)} />
 
               <div className="cs-content">
                 {contentSections.map((section, idx) => (
-                  <section className="cs-section cs-reveal" style={revealDelay(6 + idx)} key={`${project.slug}-section-${isTldrView ? 'tldr' : 'full'}-${idx}`}>
+                  <section className="cs-section cs-reveal" id={sectionTocItems[idx]?.id} style={revealDelay(6 + idx)} key={`${project.slug}-section-${isTldrView ? 'tldr' : 'full'}-${idx}`}>
                     <h2>{section.header}</h2>
                     {section.body && section.body.map((line, lineIdx) => (
                       <p key={`${project.slug}-body-${idx}-${lineIdx}`} style={{ maxWidth: 'none', width: '100%' }}>{renderHighlightedLine(line)}</p>
@@ -779,7 +849,7 @@
                 ))}
 
                 {details.gallery && details.gallery.length > 0 && (
-                  <section className="cs-section cs-reveal" style={revealDelay(7 + contentSections.length)}>
+                  <section className="cs-section cs-reveal" id="gallery" style={revealDelay(7 + contentSections.length)}>
                     <h2>Gallery</h2>
                     <div className="cs-gallery">
                       {details.gallery.map((imgPath, idx) => (

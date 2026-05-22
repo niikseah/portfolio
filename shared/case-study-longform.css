@@ -1,0 +1,303 @@
+:root {
+  --case-paper: #fafaf7;
+  --case-paper-warm: #f4f2ec;
+  --case-ink: #0f1729;
+  --case-ink-soft: #3c445a;
+  --case-ink-muted: #6b7388;
+  --case-rule: #e4e1d8;
+  --case-blue: #2e5aac;
+  --case-blue-tint: #ebf1fb;
+  --case-display: "Apple Garamond", Georgia, serif;
+  --case-body: "Helvetica Neue", -apple-system, system-ui, sans-serif;
+  --case-mono: "JetBrains Mono", ui-monospace, monospace;
+}
+
+body.case-study-longform {
+  background: var(--case-paper);
+  color: var(--case-ink);
+  font-family: var(--case-body);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+body.case-study-longform .hero-backdrop {
+  overflow: visible;
+}
+
+body.case-study-longform main,
+body.case-study-longform .container,
+body.case-study-longform .article,
+body.case-study-longform .mo-page,
+body.case-study-longform .cs-body {
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+body.case-study-longform main,
+body.case-study-longform .mo-page,
+body.case-study-longform .cs-body {
+  padding: 96px 32px 110px;
+}
+
+body.case-study-longform .article,
+body.case-study-longform .container {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+body.case-study-longform h1 {
+  font-family: var(--case-display);
+  font-weight: 400;
+  font-size: clamp(48px, 8vw, 96px);
+  line-height: 0.98;
+  letter-spacing: -0.035em;
+  color: var(--case-ink);
+  max-width: 980px;
+  margin: 0 0 28px;
+}
+
+body.case-study-longform h1 em {
+  color: var(--case-blue);
+  font-style: italic;
+  font-weight: 300;
+}
+
+body.case-study-longform .lede,
+body.case-study-longform .hero-deck,
+body.case-study-longform .hero-sub,
+body.case-study-longform .cs-subtitle,
+body.case-study-longform .mo-subtitle,
+body.case-study-longform .article > h1 + h3,
+body.case-study-longform .article > h1 + p {
+  max-width: 960px;
+  margin: 0 0 56px;
+  color: var(--case-ink-soft);
+  font-family: var(--case-body);
+  font-size: 20px;
+  font-weight: 300;
+  line-height: 1.55;
+  letter-spacing: 0;
+}
+
+body.case-study-longform .cs-summary {
+  width: 100%;
+  max-width: none;
+  margin: 28px 0 42px;
+  padding: 10px 0;
+  border-top: 1px solid var(--case-rule);
+  border-bottom: 1px solid var(--case-rule);
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, max-content));
+  gap: 0 28px;
+  justify-content: start;
+  align-items: start;
+}
+
+body.case-study-longform .cs-summary > div {
+  min-width: 0;
+  padding-left: 24px;
+  display: grid;
+  gap: 4px;
+  justify-items: start;
+}
+
+body.case-study-longform .cs-summary dt {
+  margin: 0;
+  color: var(--case-ink-muted);
+  font-family: var(--case-mono);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+
+body.case-study-longform .cs-summary dd {
+  margin: 0;
+  color: var(--case-ink);
+  font-size: 15px;
+  line-height: 1.4;
+}
+
+.case-toc {
+  position: sticky;
+  top: 72px;
+  z-index: 40;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 8px 16px;
+  margin: 0 0 34px;
+  padding: 16px 18px;
+  border: 1px solid var(--case-rule);
+  border-radius: 12px;
+  background: var(--case-paper-warm);
+  font-size: 0.88rem;
+  box-shadow: 0 14px 32px -28px rgba(15, 23, 41, 0.55);
+}
+
+.case-toc__label {
+  color: var(--case-ink);
+  font-weight: 600;
+  margin-right: 4px;
+}
+
+.case-toc__link {
+  color: var(--case-ink-soft);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.case-toc__link:hover {
+  color: var(--case-blue);
+  text-decoration: underline;
+}
+
+.case-toc__link.is-active,
+.case-toc__link[aria-current="true"] {
+  color: var(--case-blue);
+  background: var(--case-blue-tint);
+  border-radius: 999px;
+  padding: 3px 8px;
+  margin: -3px -8px;
+  text-decoration: none;
+}
+
+body.case-study-longform .case-body,
+body.case-study-longform .full-inner,
+body.case-study-longform .cs-content,
+body.case-study-longform .article > :not(h1):not(.lede):not(.hero-deck):not(.hero-sub):not(.cs-summary):not(.case-toc),
+body.case-study-longform main > section,
+body.case-study-longform main > article.panel,
+body.case-study-longform main > .grid,
+body.case-study-longform main > .section,
+body.case-study-longform .mo-section {
+  max-width: 960px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+body.case-study-longform h2 {
+  font-family: var(--case-display);
+  font-weight: 400;
+  font-size: clamp(36px, 5vw, 52px);
+  line-height: 1.05;
+  letter-spacing: -0.025em;
+  color: var(--case-ink);
+  margin: 72px 0 24px;
+  padding: 0;
+  border: 0;
+  scroll-margin-top: 156px;
+}
+
+body.case-study-longform h3 {
+  font-family: var(--case-display);
+  font-weight: 500;
+  font-size: clamp(24px, 3vw, 34px);
+  line-height: 1.16;
+  letter-spacing: -0.015em;
+  color: var(--case-ink);
+  margin: 48px 0 16px;
+  scroll-margin-top: 156px;
+}
+
+body.case-study-longform p,
+body.case-study-longform li,
+body.case-study-longform blockquote {
+  color: var(--case-ink-soft);
+  font-size: 17px;
+  line-height: 1.72;
+}
+
+body.case-study-longform p {
+  max-width: none;
+  margin-bottom: 20px;
+}
+
+body.case-study-longform ul,
+body.case-study-longform ol {
+  color: var(--case-ink-soft);
+  margin: 0 0 22px;
+  padding-left: 1.35em;
+}
+
+body.case-study-longform li + li {
+  margin-top: 8px;
+}
+
+body.case-study-longform table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 18px 0 28px;
+  color: var(--case-ink-soft);
+  font-size: 0.95rem;
+}
+
+body.case-study-longform th,
+body.case-study-longform td {
+  border: 1px solid var(--case-rule);
+  padding: 10px;
+  text-align: left;
+  vertical-align: top;
+}
+
+body.case-study-longform th {
+  color: var(--case-ink);
+  background: var(--case-paper-warm);
+  font-weight: 600;
+}
+
+body.case-study-longform img,
+body.case-study-longform iframe,
+body.case-study-longform video {
+  max-width: 100%;
+}
+
+body.case-study-longform .inline-image,
+body.case-study-longform figure,
+body.case-study-longform .pdf-frame,
+body.case-study-longform .mo-video-frame,
+body.case-study-longform .cs-cover,
+body.case-study-longform .mo-cover {
+  border: 1px solid var(--case-rule);
+  border-radius: 12px;
+  overflow: hidden;
+  background: #fff;
+  box-shadow: 0 18px 34px -30px rgba(19, 49, 92, 0.5);
+}
+
+body.case-study-longform .inline-image {
+  display: block;
+  width: 100%;
+  margin: 18px 0 24px;
+}
+
+body.case-study-longform .panel,
+body.case-study-longform .section,
+body.case-study-longform .cli-box,
+body.case-study-longform .doc-card {
+  border-color: var(--case-rule);
+  border-radius: 14px;
+  background: #fff;
+}
+
+body.case-study-longform .case-footer {
+  display: none;
+}
+
+@media (max-width: 720px) {
+  body.case-study-longform main,
+  body.case-study-longform .mo-page,
+  body.case-study-longform .cs-body {
+    padding: 58px 20px 86px;
+  }
+
+  body.case-study-longform h1 {
+    font-size: clamp(42px, 13vw, 64px);
+  }
+
+  .case-toc {
+    top: 64px;
+  }
+}
