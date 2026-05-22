@@ -122,7 +122,7 @@ body.case-study-longform .cs-summary dd {
 
 .case-toc {
   position: sticky;
-  top: 72px;
+  top: 88px;
   z-index: 40;
   display: flex;
   flex-wrap: wrap;
@@ -298,6 +298,6 @@ body.case-study-longform .case-footer {
   }
 
   .case-toc {
-    top: 64px;
+    top: 72px;
   }
 }
