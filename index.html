@@ -217,7 +217,9 @@
       isolation: isolate;
       border-radius: 22px;
       border: 1px solid color-mix(in srgb, var(--electric-500) 28%, var(--border-1));
-      background: #ffffff;
+      background-color: #ffffff;
+      background-image: radial-gradient(circle, rgba(30,87,232,0.055) 1px, transparent 1px);
+      background-size: 22px 22px;
       box-shadow: 0 18px 42px -36px rgba(35, 74, 160, 0.45);
       padding-inline: clamp(18px, 2.5vw, 30px);
     }
@@ -249,8 +251,9 @@
     }
     .hero__name-mark {
       font-weight: 400;
-      color: var(--midnight-500);
+      color: var(--electric-500);
       margin-left: 4px;
+      text-shadow: 0 0 32px rgba(42,107,255,0.38);
     }
     .hero__name em { font-style: italic; color: var(--midnight-500); font-weight: 300; }
     .hero__lede {
@@ -295,6 +298,26 @@
     .hero__meta {
       margin-top: 28px;
     }
+    /* hero bio-row: pill-button links */
+    .hero .bio-row {
+      margin-top: 0;
+      gap: 8px;
+    }
+    .hero .bio-row a {
+      padding: 7px 14px 7px 10px;
+      border: 1px solid var(--border-1);
+      border-radius: 999px;
+      background: var(--bg-3);
+      box-shadow: 0 1px 4px -2px rgba(15,21,48,0.10);
+      font-size: 13px;
+      gap: 6px;
+    }
+    .hero .bio-row a:hover {
+      border-color: var(--border-strong);
+      background: color-mix(in srgb, var(--bg-3) 88%, var(--electric-100) 12%);
+      box-shadow: 0 4px 12px -6px rgba(30,87,232,0.22);
+    }
+    .hero .bio-row .sep { display: none; }
     .hero__meta--split {
       display: flex;
       flex-direction: row;
@@ -709,6 +732,21 @@
     .experience-row .card::-webkit-scrollbar-track {
       background: transparent;
     }
+    /* scroll-fade edge on the experience row */
+    .experience-row-outer {
+      position: relative;
+    }
+    .experience-row-outer::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 12px;
+      width: 88px;
+      background: linear-gradient(to left, var(--bg-1) 18%, transparent);
+      pointer-events: none;
+      z-index: 2;
+    }
     @media (max-width: 640px) {
       .hero {
         padding-top: 30px;
@@ -1039,6 +1077,7 @@
                 <em>work experience</em>
               </h2>
             </div>
+            <div className="experience-row-outer">
             <div className="experience-row reveal">
               {workExperiences.map((exp) => (
                 <article className={`card ${exp.cardTone || ''}`.trim()} key={`${exp.company}-${exp.period}`}>
@@ -1083,6 +1122,7 @@
                   </ul>
                 </article>
               ))}
+            </div>
             </div>
 
             <Footer />

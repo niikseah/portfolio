@@ -344,7 +344,7 @@ nav.nav:has(.nav-inner) {
 .footer {
   margin-top: 24px;
   padding: 28px 0 60px;
-  border-top: 1px dashed var(--border-2);
+  border-top: 1px solid var(--border-1);
   color: var(--fg-3);
   font-family: var(--font-mono);
   font-size: var(--step--1);
@@ -536,12 +536,14 @@ main > .cs-summary dd,
   text-decoration: none; color: inherit;
   transition: border-color var(--dur-2) var(--ease-out),
               background var(--dur-2) var(--ease-out),
-              box-shadow var(--dur-2) var(--ease-out);
+              box-shadow var(--dur-2) var(--ease-out),
+              transform var(--dur-2) var(--ease-out);
 }
 .card:hover {
   border-color: var(--border-2);
   background: color-mix(in srgb, var(--bg-3) 96%, var(--electric-100) 4%);
   box-shadow: 0 14px 30px -24px rgba(15, 21, 48, 0.36);
+  transform: translateY(-2px);
 }
 .card:active { box-shadow: 0 10px 22px -20px rgba(15, 21, 48, 0.34); }
 .card__thumb {
@@ -1089,4 +1091,5 @@ main > .cs-summary dd,
   .bio-row a svg {
     transition: none;
   }
+  .card:hover { transform: none; }
 }
