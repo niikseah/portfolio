@@ -7,9 +7,9 @@
   --case-rule: #e4e1d8;
   --case-blue: #2e5aac;
   --case-blue-tint: #ebf1fb;
-  --case-display: "Apple Garamond", Georgia, serif;
-  --case-body: "Helvetica Neue", -apple-system, system-ui, sans-serif;
-  --case-mono: "JetBrains Mono", ui-monospace, monospace;
+  --case-display: "Apple Garamond";
+  --case-body: "Helvetica Neue";
+  --case-mono: "Helvetica Neue";
 }
 
 body.case-study-longform {

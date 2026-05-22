@@ -4,9 +4,6 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Kita — From Blind Box to Brochure | Case Study</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
   :root {
     --paper: #FAFAF7;
@@ -28,7 +25,7 @@
   html { scroll-behavior: smooth; }
 
   body {
-    font-family: 'Apple Garamond', Georgia, serif;
+    font-family: 'Apple Garamond';
     font-weight: 400;
     background: var(--paper);
     color: var(--ink);
@@ -52,7 +49,7 @@
   .narrow { max-width: 720px; margin: 0 auto; padding: 0 32px; position: relative; z-index: 2; }
 
   .mono {
-    font-family: 'JetBrains Mono', ui-monospace, monospace;
+    font-family: 'Helvetica Neue';
     font-size: 0.72rem;
     letter-spacing: 0.12em;
     text-transform: uppercase;
@@ -66,7 +63,7 @@
     padding: 48px 0 80px;
   }
   .tldr-page .tldr-eyebrow {
-    font-family: 'JetBrains Mono', ui-monospace, monospace;
+    font-family: 'Helvetica Neue';
     font-size: 0.72rem;
     letter-spacing: 0.14em;
     text-transform: uppercase;
@@ -74,7 +71,7 @@
     margin-bottom: 16px;
   }
   .tldr-page h1 {
-    font-family: 'Apple Garamond', Georgia, serif;
+    font-family: 'Apple Garamond';
     font-weight: 300;
     font-size: clamp(2rem, 4.5vw, 3rem);
     line-height: 1.08;
@@ -104,7 +101,7 @@
     margin-top: 8px;
   }
   .tldr-page .tldr-links a {
-    font-family: 'Helvetica Neue', sans-serif;
+    font-family: 'Helvetica Neue';
     font-size: 0.9rem;
     font-weight: 500;
     color: var(--blue-700);
@@ -114,7 +111,7 @@
   }
   .tldr-page .tldr-links a:hover { color: var(--blue-900); border-color: var(--blue-500); }
   .tldr-page .tldr-to-full {
-    font-family: 'Helvetica Neue', sans-serif;
+    font-family: 'Helvetica Neue';
     font-size: 0.9rem;
     font-weight: 500;
     color: var(--blue-700);
@@ -136,7 +133,7 @@
     border-bottom: 1px solid var(--rule);
   }
   .tldr-facts dt {
-    font-family: 'JetBrains Mono', ui-monospace, monospace;
+    font-family: 'Helvetica Neue';
     font-size: 0.68rem;
     letter-spacing: 0.12em;
     text-transform: uppercase;
@@ -145,14 +142,14 @@
   }
   .tldr-facts dd {
     margin: 0;
-    font-family: 'Apple Garamond', Georgia, serif;
+    font-family: 'Apple Garamond';
     font-size: 1.05rem;
     color: var(--ink);
     line-height: 1.35;
   }
   .tldr-block { margin: 0 0 32px; }
   .tldr-block .tldr-h {
-    font-family: 'JetBrains Mono', ui-monospace, monospace;
+    font-family: 'Helvetica Neue';
     font-size: 0.72rem;
     letter-spacing: 0.12em;
     text-transform: uppercase;
@@ -164,7 +161,7 @@
   }
   .tldr-block .tldr-num { color: var(--ink-muted); font-weight: 500; }
   .tldr-block .tldr-title {
-    font-family: 'Apple Garamond', Georgia, serif;
+    font-family: 'Apple Garamond';
     font-size: clamp(1.35rem, 2.8vw, 1.75rem);
     font-weight: 400;
     line-height: 1.2;
@@ -194,7 +191,7 @@
     background: rgba(255, 255, 255, 0.65);
   }
   .tldr-dcard .d-tag {
-    font-family: 'JetBrains Mono', ui-monospace, monospace;
+    font-family: 'Helvetica Neue';
     font-size: 0.65rem;
     letter-spacing: 0.1em;
     text-transform: uppercase;
@@ -202,7 +199,7 @@
     margin-bottom: 6px;
   }
   .tldr-dcard h3 {
-    font-family: 'Apple Garamond', Georgia, serif;
+    font-family: 'Apple Garamond';
     font-size: 1.05rem;
     font-weight: 500;
     margin: 0 0 8px;
@@ -224,7 +221,7 @@
   }
   .tldr-pullquote blockquote {
     margin: 0;
-    font-family: 'Apple Garamond', Georgia, serif;
+    font-family: 'Apple Garamond';
     font-size: 1.2rem;
     font-style: italic;
     line-height: 1.45;
@@ -234,7 +231,7 @@
   .tldr-pullquote cite {
     display: block;
     margin-top: 12px;
-    font-family: 'JetBrains Mono', ui-monospace, monospace;
+    font-family: 'Helvetica Neue';
     font-size: 0.72rem;
     font-style: normal;
     letter-spacing: 0.06em;
@@ -252,7 +249,7 @@
     border-top: 1px dashed var(--rule);
   }
   .tldr-resources a {
-    font-family: 'Helvetica Neue', sans-serif;
+    font-family: 'Helvetica Neue';
     font-size: 0.9rem;
     font-weight: 500;
     color: var(--blue-700);
@@ -375,7 +372,7 @@
   section.block { padding: 96px 0; position: relative; }
   .block-label { display: flex; align-items: center; gap: 14px; margin-bottom: 32px; }
   .block-label .num {
-    font-family: 'JetBrains Mono', monospace;
+    font-family: 'Helvetica Neue';
     font-size: 0.72rem;
     color: var(--blue-500);
     font-weight: 500;
@@ -383,7 +380,7 @@
   }
   .block-label .line { flex: 1; height: 1px; background: var(--rule); max-width: 80px; }
   .block-label .title {
-    font-family: 'JetBrains Mono', monospace;
+    font-family: 'Helvetica Neue';
     font-size: 0.72rem;
     letter-spacing: 0.18em;
     text-transform: uppercase;
@@ -442,7 +439,7 @@
   }
   aside.theory-aside p {
     margin: 0;
-    font-family: 'Apple Garamond', Georgia, serif;
+    font-family: 'Apple Garamond';
     max-width: none;
     width: 100%;
   }
@@ -489,7 +486,7 @@
     margin-top: 4px;
   }
   .finding-heading {
-    font-family: 'JetBrains Mono', ui-monospace, monospace;
+    font-family: 'Helvetica Neue';
     font-size: 0.72rem;
     letter-spacing: 0.1em;
     color: var(--blue-700);
@@ -501,7 +498,7 @@
     color: var(--blue-900);
   }
   .finding-subheading {
-    font-family: 'JetBrains Mono', ui-monospace, monospace;
+    font-family: 'Helvetica Neue';
     font-size: 0.68rem;
     letter-spacing: 0.1em;
     color: var(--ink-muted);
@@ -534,7 +531,7 @@
     transform: translateY(-2px);
   }
   .decision .d-label {
-    font-family: 'JetBrains Mono', monospace;
+    font-family: 'Helvetica Neue';
     font-size: 0.7rem;
     letter-spacing: 0.15em;
     text-transform: uppercase;
@@ -646,7 +643,7 @@
   }
   @media (max-width: 780px) { .metric-grid { grid-template-columns: 1fr; gap: 40px; } }
   .metric .m-label {
-    font-family: 'JetBrains Mono', monospace;
+    font-family: 'Helvetica Neue';
     font-size: 0.7rem;
     letter-spacing: 0.15em;
     text-transform: uppercase;
@@ -678,7 +675,7 @@
     max-width: 740px;
   }
   .metric-caveat .cav-label {
-    font-family: 'JetBrains Mono', monospace;
+    font-family: 'Helvetica Neue';
     font-size: 0.68rem;
     letter-spacing: 0.15em;
     text-transform: uppercase;
@@ -702,7 +699,7 @@
     width: 100%;
   }
   .impact-prose p {
-    font-family: 'Apple Garamond', Georgia, serif;
+    font-family: 'Apple Garamond';
     font-size: 0.98rem;
     line-height: 1.65;
     color: rgba(250, 250, 247, 0.78);
@@ -727,7 +724,7 @@
     border-radius: 6px;
     background: linear-gradient(165deg, rgba(24, 65, 114, 0.42), rgba(10, 39, 78, 0.34));
     box-shadow: 0 14px 26px -22px rgba(0, 0, 0, 0.7);
-    font-family: 'Apple Garamond', Georgia, serif;
+    font-family: 'Apple Garamond';
     font-size: 1rem;
     line-height: 1.62;
     color: rgba(250, 250, 247, 0.9);
@@ -737,7 +734,7 @@
   .impact-outcomes-asides aside::before {
     display: block;
     margin-bottom: 10px;
-    font-family: 'JetBrains Mono', monospace;
+    font-family: 'Helvetica Neue';
     font-size: 0.72rem;
     letter-spacing: 0.12em;
     text-transform: uppercase;
@@ -773,7 +770,7 @@
     border-radius: 6px;
     background: linear-gradient(165deg, rgba(24, 65, 114, 0.42), rgba(10, 39, 78, 0.34));
     box-shadow: 0 14px 26px -22px rgba(0, 0, 0, 0.7);
-    font-family: 'Apple Garamond', Georgia, serif;
+    font-family: 'Apple Garamond';
     font-size: 1rem;
     line-height: 1.62;
     color: rgba(250, 250, 247, 0.9);
@@ -783,7 +780,7 @@
   .impact-method-asides aside::before {
     display: block;
     margin-bottom: 10px;
-    font-family: 'JetBrains Mono', monospace;
+    font-family: 'Helvetica Neue';
     font-size: 0.72rem;
     letter-spacing: 0.12em;
     text-transform: uppercase;
@@ -846,7 +843,7 @@
     position: absolute;
     left: 14px;
     bottom: 12px;
-    font-family: 'JetBrains Mono', monospace;
+    font-family: 'Helvetica Neue';
     font-size: 0.62rem;
     letter-spacing: 0.13em;
     text-transform: uppercase;
@@ -865,7 +862,7 @@
   }
   .impact-story-copy p {
     margin: 0;
-    font-family: 'Apple Garamond', Georgia, serif;
+    font-family: 'Apple Garamond';
     font-size: 0.95rem;
     line-height: 1.62;
     color: rgba(250, 250, 247, 0.8);
@@ -884,7 +881,7 @@
   }
   .works-cited-list li {
     margin-bottom: 18px;
-    font-family: 'Apple Garamond', Georgia, serif;
+    font-family: 'Apple Garamond';
     font-size: 0.92rem;
     line-height: 1.55;
     color: var(--ink-soft);
@@ -928,7 +925,7 @@
     opacity: 0.5;
   }
   .pullquote cite {
-    font-family: 'JetBrains Mono', monospace;
+    font-family: 'Helvetica Neue';
     font-size: 0.72rem;
     letter-spacing: 0.15em;
     text-transform: uppercase;

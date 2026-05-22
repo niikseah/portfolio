@@ -1,7 +1,7 @@
 /* ─────────────────────────────────────────────────────────────
    niik's digital garden — colors & type
    A whimsical-minimalism system built on midnight + electric blues.
-   Apple Garamond (display) + Helvetica Neue (body) + JetBrains Mono (code).
+   Apple Garamond (display) + Helvetica Neue (body and labels).
    ───────────────────────────────────────────────────────────── */
 
 @import url('./fonts/fonts.css');
@@ -67,9 +67,9 @@
   --aurora-d: #7cb8ff;
 
   /* ── TYPOGRAPHY ──────────────────────────────────────────── */
-  --font-display: 'Apple Garamond', ui-serif, Georgia, 'Times New Roman', serif;
-  --font-body:    'Helvetica Neue', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
-  --font-mono:    'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+  --font-display: "Apple Garamond";
+  --font-body: "Helvetica Neue";
+  --font-mono: "Helvetica Neue";
 
   /* Fluid type scale */
   --step--1: clamp(0.80rem, 0.78rem + 0.10vw, 0.875rem);

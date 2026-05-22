@@ -1,0 +1,425 @@
+<!doctype html>
+<html lang="en" data-theme="day">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Unused Files Review</title>
+  <link rel="stylesheet" href="design-system/colors_and_type.css" />
+  <link rel="stylesheet" href="shared/shell.css" />
+  <style>
+    :root {
+      --review-paper: #fafaf7;
+      --review-ink: #111827;
+      --review-muted: #5f6b7a;
+      --review-rule: #dedbd2;
+      --review-blue: #2f6eea;
+      --review-blue-soft: #eaf2ff;
+    }
+
+    body {
+      margin: 0;
+      background: var(--review-paper);
+      color: var(--review-ink);
+      font-family: "Helvetica Neue";
+      line-height: 1.55;
+    }
+
+    main {
+      width: min(1120px, calc(100% - 48px));
+      margin: 0 auto;
+      padding: 56px 0 96px;
+    }
+
+    h1 {
+      margin: 0 0 12px;
+      font-family: "Apple Garamond";
+      font-size: clamp(48px, 8vw, 88px);
+      font-weight: 400;
+      line-height: 0.98;
+      letter-spacing: -0.04em;
+    }
+
+    .lede {
+      max-width: 760px;
+      margin: 0 0 34px;
+      color: var(--review-muted);
+      font-size: 18px;
+    }
+
+    .toolbar {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+      margin: 0 0 28px;
+      padding: 14px 0;
+      background: color-mix(in srgb, var(--review-paper) 92%, transparent);
+      backdrop-filter: blur(10px);
+    }
+
+    .search {
+      min-width: min(420px, 100%);
+      flex: 1;
+      border: 1px solid var(--review-rule);
+      border-radius: 999px;
+      background: #fff;
+      color: var(--review-ink);
+      font: inherit;
+      padding: 11px 16px;
+    }
+
+    .pill {
+      border: 1px solid var(--review-rule);
+      border-radius: 999px;
+      background: #fff;
+      color: var(--review-muted);
+      font-size: 13px;
+      padding: 8px 12px;
+    }
+
+    section {
+      margin: 34px 0;
+      padding: 28px;
+      border: 1px solid var(--review-rule);
+      border-radius: 18px;
+      background: rgba(255, 255, 255, 0.68);
+    }
+
+    h2 {
+      margin: 0 0 6px;
+      font-family: "Apple Garamond";
+      font-size: clamp(30px, 4vw, 46px);
+      font-weight: 400;
+      letter-spacing: -0.02em;
+    }
+
+    .section-note {
+      margin: 0 0 20px;
+      color: var(--review-muted);
+    }
+
+    .file-list {
+      display: grid;
+      gap: 12px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .file-card {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 16px;
+      align-items: start;
+      padding: 14px 16px;
+      border: 1px solid var(--review-rule);
+      border-radius: 14px;
+      background: #fff;
+    }
+
+    .path {
+      margin: 0;
+      font-family: "Helvetica Neue";
+      font-size: 13px;
+      line-height: 1.5;
+      word-break: break-word;
+    }
+
+    .meta {
+      margin: 5px 0 0;
+      color: var(--review-muted);
+      font-size: 13px;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      gap: 8px;
+    }
+
+    a.button,
+    button.button {
+      border: 1px solid var(--review-rule);
+      border-radius: 999px;
+      background: var(--review-blue-soft);
+      color: var(--review-blue);
+      cursor: pointer;
+      font: 600 13px/1.2 "Helvetica Neue";
+      padding: 8px 11px;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+
+    button.button[disabled] {
+      cursor: not-allowed;
+      opacity: 0.45;
+    }
+
+    .preview {
+      grid-column: 1 / -1;
+      display: none;
+      margin: 8px 0 0;
+      padding: 14px;
+      border-radius: 12px;
+      background: #f6f4ee;
+      color: var(--review-ink);
+      overflow: auto;
+      max-height: 360px;
+      white-space: pre-wrap;
+      font: 12px/1.5 "Helvetica Neue";
+    }
+
+    .preview.is-open {
+      display: block;
+    }
+
+    .thumb {
+      grid-column: 1 / -1;
+      display: none;
+      max-width: 360px;
+      max-height: 220px;
+      border: 1px solid var(--review-rule);
+      border-radius: 12px;
+      object-fit: contain;
+      background: #fff;
+    }
+
+    .thumb.is-open {
+      display: block;
+    }
+
+    .empty {
+      display: none;
+      margin: 24px 0;
+      color: var(--review-muted);
+    }
+
+    @media (max-width: 720px) {
+      main {
+        width: min(100% - 32px, 1120px);
+        padding-top: 36px;
+      }
+
+      section {
+        padding: 18px;
+      }
+
+      .file-card {
+        grid-template-columns: 1fr;
+      }
+
+      .actions {
+        justify-content: flex-start;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <a class="project-topbar__back" href="portfolio.html">← Back to portfolio</a>
+    <h1>Unused Files Review</h1>
+    <p class="lede">
+      A review page for files and folders that appear unnecessary for the public static site.
+      This page does not delete anything; it gives you one place to open paths and preview text or images locally.
+    </p>
+
+    <div class="toolbar">
+      <input class="search" id="search" type="search" placeholder="Filter by file, folder, or note..." />
+      <span class="pill" id="count">0 items</span>
+    </div>
+
+    <p class="empty" id="empty">No matching files found.</p>
+
+    <div id="sections"></div>
+  </main>
+
+  <script>
+    const groups = [
+      {
+        title: 'High Confidence Unused',
+        note: 'These are not referenced by the current public site graph or are explicitly archive/unused/template material.',
+        items: [
+          { path: 'unused/', type: 'directory', note: 'Explicit unused folder.' },
+          { path: '_archive/', type: 'directory', note: 'Archive folder.' },
+          { path: 'case-studies/templates/', type: 'directory', note: 'Case-study templates, not linked as public pages.' },
+          { path: 'case-studies/_format_lions_icp.py', type: 'text', note: 'Formatting helper script.' },
+          { path: 'public/design-assets/telegram-bot-heymax/', type: 'directory', note: 'No current public reference found.' },
+          { path: 'public/design-assets/project-media/nusmart-dining-revamp/', type: 'directory', note: 'Old removed NUSMart generated-page media.' },
+          { path: 'public/design-assets/project-media/fusion-scanner/1 1.png', type: 'image', note: 'No current reference found.' },
+          { path: 'public/design-assets/project-media/fusion-scanner/1 2.png', type: 'image', note: 'No current reference found.' },
+          { path: 'public/design-assets/project-media/fusion-scanner/1 3.png', type: 'image', note: 'No current reference found.' },
+          { path: 'public/design-assets/project-media/fusion-scanner/2 1.png', type: 'image', note: 'No current reference found.' },
+          { path: 'public/design-assets/project-media/fusion-scanner/2 2.png', type: 'image', note: 'No current reference found.' },
+          { path: 'public/design-assets/project-media/pantry-pal/Screenshot_2025-02-09_at_10.29.48.png', type: 'image', note: 'No current reference found.' },
+          { path: 'public/documents/cs4240-ar-vr-stoma-siting-survey.pdf', type: 'binary', note: 'No current reference found.' },
+          { path: 'clinicconnect/[CS2103-F11-4][ClinicConnect].jar', type: 'binary', note: 'JAR file not linked by the current ClinicConnect page.' },
+          { path: 'public/README.md', type: 'text', note: 'Repository note, not part of public site.' },
+        ],
+      },
+      {
+        title: 'Source Or Archive Candidates',
+        note: 'These look more like source material, demos, coursework, or design-system workbench files than public dependencies.',
+        items: [
+          { path: 'content-sources/', type: 'directory', note: 'Source drafts used to create pages.' },
+          { path: 'Heymax-Planner/', type: 'directory', note: 'Planner project source; not directly linked as the public page.' },
+          { path: 'ip/', type: 'directory', note: 'Java/IP source project.' },
+          { path: 'school/cs3245/', type: 'directory', note: 'Coursework source. Note: a few homework-1 text files are used by the 4-gram page.' },
+          { path: 'design-system/preview/', type: 'directory', note: 'Design-system preview workbench.' },
+          { path: 'design-system/ui_kits/', type: 'directory', note: 'UI kit source demos.' },
+          { path: 'design-system/README.md', type: 'text', note: 'Documentation.' },
+          { path: 'design-system/SKILL.md', type: 'text', note: 'Design-system skill notes.' },
+          { path: 'map/', type: 'directory', note: 'Standalone map demo; no public portfolio link found.' },
+        ],
+      },
+      {
+        title: 'Needs Attention',
+        note: 'These may indicate broken links or build-output questions rather than files to delete.',
+        items: [
+          { path: 'projects/flexijio-case-study/', type: 'directory', note: 'Portfolio data links to projects/flexijio-case-study/dist/index.html, but the checked-in source folder is separate from that dist output.' },
+          { path: 'public/design-assets/project-media/flexijio/', type: 'directory', note: 'Flexijio media folder not directly referenced by the current public graph.' },
+          { path: 'case-studies/homework-1.html', type: 'text', note: 'Legacy redirect to 4-gram-language-model.html; not currently linked from project data.' },
+        ],
+      },
+    ];
+
+    const textExtensions = new Set(['.html', '.css', '.js', '.jsx', '.md', '.txt', '.py', '.json', '.xml', '.sh', '.bat', '.gradle']);
+    const imageExtensions = new Set(['.png', '.jpg', '.jpeg', '.gif', '.webp', '.svg']);
+
+    const extensionOf = (path) => {
+      const clean = path.split('?')[0].toLowerCase();
+      const match = clean.match(/\.[a-z0-9]+$/);
+      return match ? match[0] : '';
+    };
+
+    const canPreviewText = (item) => item.type === 'text' || textExtensions.has(extensionOf(item.path));
+    const canPreviewImage = (item) => item.type === 'image' || imageExtensions.has(extensionOf(item.path));
+    const isDirectory = (item) => item.type === 'directory' || item.path.endsWith('/');
+
+    const render = () => {
+      const root = document.getElementById('sections');
+      root.innerHTML = '';
+
+      let visibleCount = 0;
+      const query = document.getElementById('search').value.trim().toLowerCase();
+
+      groups.forEach((group) => {
+        const matching = group.items.filter((item) => {
+          const haystack = `${group.title} ${group.note} ${item.path} ${item.note || ''}`.toLowerCase();
+          return !query || haystack.includes(query);
+        });
+        if (!matching.length) return;
+
+        visibleCount += matching.length;
+
+        const section = document.createElement('section');
+        section.innerHTML = `
+          <h2>${group.title}</h2>
+          <p class="section-note">${group.note}</p>
+          <ul class="file-list"></ul>
+        `;
+
+        const list = section.querySelector('.file-list');
+        matching.forEach((item) => list.appendChild(renderItem(item)));
+        root.appendChild(section);
+      });
+
+      document.getElementById('count').textContent = `${visibleCount} item${visibleCount === 1 ? '' : 's'}`;
+      document.getElementById('empty').style.display = visibleCount ? 'none' : 'block';
+    };
+
+    const renderItem = (item) => {
+      const card = document.createElement('li');
+      card.className = 'file-card';
+      card.dataset.path = item.path;
+
+      const info = document.createElement('div');
+      info.innerHTML = `
+        <p class="path">${item.path}</p>
+        <p class="meta">${item.note || ''}</p>
+      `;
+
+      const actions = document.createElement('div');
+      actions.className = 'actions';
+
+      const open = document.createElement('a');
+      open.className = 'button';
+      open.href = encodeURI(item.path);
+      open.target = '_blank';
+      open.rel = 'noopener noreferrer';
+      open.textContent = isDirectory(item) ? 'Open folder' : 'Open';
+      actions.appendChild(open);
+
+      if (canPreviewText(item)) {
+        const button = document.createElement('button');
+        button.className = 'button';
+        button.type = 'button';
+        button.textContent = 'Preview text';
+        button.addEventListener('click', () => toggleTextPreview(card, item.path, button));
+        actions.appendChild(button);
+      }
+
+      if (canPreviewImage(item)) {
+        const button = document.createElement('button');
+        button.className = 'button';
+        button.type = 'button';
+        button.textContent = 'Preview image';
+        button.addEventListener('click', () => toggleImagePreview(card, item.path, button));
+        actions.appendChild(button);
+      }
+
+      card.append(info, actions);
+      return card;
+    };
+
+    const toggleTextPreview = async (card, path, button) => {
+      let preview = card.querySelector('.preview');
+      if (preview) {
+        preview.classList.toggle('is-open');
+        button.textContent = preview.classList.contains('is-open') ? 'Hide preview' : 'Preview text';
+        return;
+      }
+
+      preview = document.createElement('pre');
+      preview.className = 'preview is-open';
+      preview.textContent = 'Loading...';
+      card.appendChild(preview);
+      button.textContent = 'Hide preview';
+
+      try {
+        const response = await fetch(encodeURI(path));
+        if (!response.ok) throw new Error(`${response.status} ${response.statusText}`);
+        const text = await response.text();
+        preview.textContent = text.length > 30000
+          ? `${text.slice(0, 30000)}\n\n... preview truncated ...`
+          : text;
+      } catch (error) {
+        preview.textContent = `Could not load preview for ${path}\n${error.message}`;
+      }
+    };
+
+    const toggleImagePreview = (card, path, button) => {
+      let image = card.querySelector('.thumb');
+      if (image) {
+        image.classList.toggle('is-open');
+        button.textContent = image.classList.contains('is-open') ? 'Hide image' : 'Preview image';
+        return;
+      }
+
+      image = document.createElement('img');
+      image.className = 'thumb is-open';
+      image.src = encodeURI(path);
+      image.alt = path;
+      image.loading = 'lazy';
+      card.appendChild(image);
+      button.textContent = 'Hide image';
+    };
+
+    document.getElementById('search').addEventListener('input', render);
+    render();
+  </script>
+</body>
+</html>

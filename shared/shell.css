@@ -134,7 +134,7 @@ button:focus-visible,
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: "Helvetica Neue";
   font-size: 14px;
   font-weight: 500;
   line-height: 1;
@@ -367,7 +367,7 @@ footer.case-footer {
     var(--bg-1, #fafaf7) 62%
   );
   color: var(--fg-2, #3c445a);
-  font-family: var(--font-body, "Helvetica Neue", -apple-system, system-ui, sans-serif);
+  font-family: var(--font-body, "Helvetica Neue");
   font-size: var(--step-0, 15px);
   line-height: 1.55;
 }
@@ -402,7 +402,7 @@ footer.case-footer .case-footer__mark {
   width: fit-content;
   max-width: 100%;
   justify-self: start;
-  font-family: var(--font-display, Georgia, "Iowan Old Style", serif);
+  font-family: var(--font-display, "Apple Garamond");
   font-style: italic;
   font-weight: 400;
   font-size: clamp(1.35rem, 2.2vw, 1.85rem);
@@ -431,7 +431,7 @@ footer.case-footer .case-footer__row {
 }
 footer.case-footer .case-footer__k {
   display: inline-block;
-  font-family: var(--font-mono, ui-monospace, monospace);
+  font-family: var(--font-mono, "Helvetica Neue");
   font-size: 11px;
   font-weight: 500;
   letter-spacing: 0.1em;
@@ -485,7 +485,7 @@ main > .cs-summary > div,
 main > .cs-summary dt,
 .hero .cs-summary dt,
 .legacy-summary .cs-summary dt {
-  font-family: var(--font-mono, ui-monospace, monospace);
+  font-family: var(--font-mono, "Helvetica Neue");
   font-size: 11px;
   letter-spacing: 0.1em;
   text-transform: uppercase;

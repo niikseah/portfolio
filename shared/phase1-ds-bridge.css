@@ -9,7 +9,7 @@ html, body {
 }
 
 body {
-  font-family: var(--font-body, "Helvetica Neue", -apple-system, system-ui, sans-serif);
+  font-family: var(--font-body, "Helvetica Neue");
   line-height: 1.55;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
@@ -26,13 +26,13 @@ h1, h2, h3 {
 }
 
 h1 {
-  font-family: var(--font-display, "Fraunces", "Iowan Old Style", Georgia, serif);
+  font-family: var(--font-display, "Apple Garamond");
   font-weight: 400;
   line-height: 1.02;
 }
 
 h2, h3 {
-  font-family: var(--font-display, "Fraunces", "Iowan Old Style", Georgia, serif);
+  font-family: var(--font-display, "Apple Garamond");
   font-weight: 500;
   line-height: 1.12;
 }
@@ -266,7 +266,7 @@ header.project-topbar {
 }
 a.project-topbar__back {
   flex-shrink: 0;
-  font-family: "Apple Garamond", Georgia, "Iowan Old Style", serif;
+  font-family: "Apple Garamond";
   font-size: 1.125rem;
   font-weight: 400;
   letter-spacing: 0.02em;
@@ -297,7 +297,7 @@ nav.project-topbar__sections[hidden] {
   display: none !important;
 }
 nav.project-topbar__sections a {
-  font-family: var(--font-body, "Helvetica Neue", -apple-system, system-ui, sans-serif);
+  font-family: var(--font-body, "Helvetica Neue");
   font-size: 0.875rem;
   font-weight: 500;
   color: var(--fg-3, #6b7388);
@@ -331,7 +331,7 @@ nav.project-topbar__sections a.is-active {
   appearance: none;
   -webkit-appearance: none;
   margin: 0;
-  font-family: var(--font-body, "Helvetica Neue", -apple-system, system-ui, sans-serif);
+  font-family: var(--font-body, "Helvetica Neue");
   font-size: 13px;
   font-weight: 500;
   color: var(--fg-4, #6b7388);

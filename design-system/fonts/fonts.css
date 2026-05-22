@@ -1,6 +1,6 @@
 /* niik's digital garden — webfonts
    Apple Garamond (display) + Helvetica Neue (body) — both brand-supplied, self-hosted.
-   JetBrains Mono (code, Google Fonts). */
+   Only Apple Garamond and Helvetica Neue are loaded. */
 
 /* ── Apple Garamond (display) ─────────────────────────────── */
 @font-face {
@@ -116,5 +116,4 @@
   font-weight: 900; font-style: italic; font-display: swap;
 }
 
-/* ── Mono (still Google Fonts — flag) ─────────────────────── */
-@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap');
+500&display=swap');
