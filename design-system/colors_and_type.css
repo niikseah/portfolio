@@ -153,19 +153,19 @@
   --fg-link: var(--electric-600);
   --fg-link-hover: var(--electric-700);
 
-  --bg-1: var(--paper-50);
-  --bg-2: var(--paper-100);
+  --bg-1: #f0f5ff;
+  --bg-2: #e4edff;
   --bg-3: #ffffff;
-  --bg-4: var(--paper-200);
+  --bg-4: #cddaff;
 
-  --border-1: rgba(30,87,232,.12);
-  --border-2: rgba(30,87,232,.22);
-  --border-strong: rgba(30,87,232,.40);
+  --border-1: rgba(30,87,232,.20);
+  --border-2: rgba(30,87,232,.34);
+  --border-strong: rgba(30,87,232,.58);
 
-  --aurora-a: #c9defe;
-  --aurora-b: #93befd;
-  --aurora-c: #eaf3ff;
-  --aurora-d: #7cb8ff;
+  --aurora-a: #93befd;
+  --aurora-b: #5b9cff;
+  --aurora-c: #c9defe;
+  --aurora-d: #3b82f6;
 }
 
 /* ── AURORA background — grainy mesh gradient ──────────────── */
@@ -184,8 +184,8 @@
     radial-gradient(50% 55% at 28% 88%, var(--aurora-c) 0%, transparent 60%),
     radial-gradient(40% 45% at 78% 82%, var(--aurora-d) 0%, transparent 60%),
     var(--bg-1);
-  filter: blur(40px) saturate(1.1);
-  opacity: 0.65;
+  filter: blur(40px) saturate(1.5);
+  opacity: 0.85;
 }
 .aurora-bg::after {
   content: "";
